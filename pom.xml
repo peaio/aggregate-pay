@@ -40,7 +40,6 @@
 		<jdk.version>1.8</jdk.version>
 		<quartz.version>2.2.1</quartz.version>
 		<cxf.version>3.0.3</cxf.version>
-		<jsoup.version>1.8.1</jsoup.version>
 		<redis.version>2.8.2</redis.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -327,12 +326,6 @@
 				<version>${quartz.version}</version>
 			</dependency>
 			<!-- quartz end -->
-			<dependency>
-				<groupId>org.jsoup</groupId>
-				<artifactId>jsoup</artifactId>
-				<version>${jsoup.version}</version>
-			</dependency>
-
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>

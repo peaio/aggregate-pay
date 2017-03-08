@@ -88,10 +88,5 @@
 			<artifactId>dic-common</artifactId>
 		</dependency>
 		<!-- end -->
-		
-		<dependency>
-			<groupId>com.sinco</groupId>
-			<artifactId>messager</artifactId>
-		</dependency>
 	</dependencies>
 </project>
