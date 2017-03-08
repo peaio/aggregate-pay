@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>b2b2c core web</display-name>
+	<context-param>  
+	    <param-name>masterAddress</param-name>  
+	    <param-value>112.124.46.129</param-value>  
+    </context-param> 
+    <context-param>  
+	    <param-name>masterPort</param-name>  
+	    <param-value>9333</param-value>  
+    </context-param> 
+	<servlet>
+		<servlet-name>KindEditorFileManagerServlet</servlet-name>
+		<servlet-class>vc.thinker.core.web.kindeditor.KindEditorFileManagerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KindEditorFileManagerServlet</servlet-name>
+		<url-pattern>/kefm</url-pattern>
+	</servlet-mapping>		
+	<servlet>
+		<servlet-name>KindEditorUploadServlet</servlet-name>
+		<servlet-class>vc.thinker.core.web.kindeditor.KindEditorUploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KindEditorUploadServlet</servlet-name>
+		<url-pattern>/keup</url-pattern>
+	</servlet-mapping>	
+	<servlet>
+		<servlet-name>KindEditorServlet</servlet-name>
+		<servlet-class>vc.thinker.core.web.kindeditor.KindEditorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KindEditorServlet</servlet-name>
+		<url-pattern>/ke</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

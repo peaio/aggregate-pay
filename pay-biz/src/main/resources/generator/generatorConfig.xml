@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<properties resource="generator/generator.properties" />
+
+	<classPathEntry location="${class.path}" />
+
+	<context id="context1">
+
+		<!-- Dao 接口类产生插件 -->
+<!-- 		<plugin type="com.sinco.mybatis.generator.plugin.SpringDataDaoPlugin"> -->
+<!-- 			<property name="targetPackage" value="${package.dao}" /> -->
+<!-- 			<property name="targetProject" value="${item.dal}" /> -->
+<!-- 			<property name="targetRootPackage" value="${package.root}" /> -->
+<!-- 		</plugin> -->
+
+		<!-- VO BO 类产生插件 -->
+<!-- 		<plugin type="com.sinco.mybatis.generator.plugin.VoPlugin"> -->
+<!-- 			<property name="targetVOPackage" value="${package.vo}" /> -->
+<!-- 			<property name="targetBOPackage" value="${package.bo}" /> -->
+<!-- 			<property name="targetProject" value="${item.dal}" /> -->
+<!-- 			<property name="targetRootPackage" value="${package.root}" /> -->
+<!-- 			<property name="isApi" value="${isApi}" /> -->
+<!-- 		</plugin> -->
+
+		<!-- 测试类产生插件 -->
+<!-- 		<plugin type="com.sinco.mybatis.generator.plugin.TestPlugin"> -->
+<!-- 			<property name="targetPackage" value="${package.test}" /> -->
+<!-- 			<property name="targetProject" value="${item.dal.test}" /> -->
+<!-- 			<property name="targetRootPackage" value="${package.root}" /> -->
+<!-- 		</plugin> -->
+		<plugin type="com.sinco.mybatis.generator.plugin.MapperPlugin">
+			<property name="boPackage" value="${package.bo}" />
+		</plugin>
+
+		<commentGenerator
+			type="com.sinco.mybatis.generator.plugin.ApiCommentGenerator">
+			<property name="isApi" value="${isApi}" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="${package.model}"
+			targetProject="${item.dal}">
+			<property name="rootClass" value="com.sinco.mybatis.dal.model.BaseModel" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="${package.mapper}"
+			targetProject="${item.dal}" />
+		<javaClientGenerator targetPackage="${package.mapper}"
+			targetProject="${item.dal}" type="XMLMAPPER" />
+
+
+		<table schema="cabbage" tableName="pay_config" domainObjectName="PayConfig" modelType="flat">
+		</table>
+	</context>
+</generatorConfiguration>
