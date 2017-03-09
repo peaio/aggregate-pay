@@ -14,6 +14,11 @@
 			<artifactId>cabbage-core-common</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+		</dependency>
+
 		<!-- PERSISTENCE begin -->
 		<!-- Hibernate -->
 		<dependency>

@@ -9,6 +9,7 @@
 	<modules>
 		<module>sys-biz</module>
 		<module>sys-web</module>
+		<module>sys-common</module>
 		<module>pay-biz</module>
 		<module>common</module>
 		<module>core-web</module>
@@ -113,6 +114,11 @@
 			</dependency>
 			<dependency>
 				<groupId>vc.thinker</groupId>
+				<artifactId>cabbage-sys-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>vc.thinker</groupId>
 				<artifactId>cabbage-core-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -185,14 +191,6 @@
 				<scope>provided</scope>
 			</dependency>
 			<!-- WEB end -->
-
-			<!-- redis begin -->
-			<dependency>
-				<groupId>redis.clients</groupId>
-				<artifactId>jedis</artifactId>
-				<version>${redis.version}</version>
-			</dependency>
-			<!-- redis end -->
 
 			<!-- SECURITY begin -->
 			<dependency>
