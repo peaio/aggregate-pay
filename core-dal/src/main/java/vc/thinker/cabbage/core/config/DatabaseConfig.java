@@ -15,21 +15,23 @@ import org.springframework.core.io.ClassPathResource;
 import com.alibaba.druid.pool.DruidDataSource;
 
 @MapperScan(basePackages="vc.thinker.**.mapper")
-@ConfigurationProperties(prefix = "datasource")
+@ConfigurationProperties(prefix = "jdbc")
 public class DatabaseConfig {
 
-	@Value("${datasource.url}")
+	@Value("${jdbc.url}")
 	private String url;
-	@Value("${datasource.username}")
+	@Value("${jdbc.username}")
 	private String username;
-	@Value("${datasource.password}")
+	@Value("${jdbc.password}")
 	private String password;
-	@Value("${datasource.initialSize}")
+	@Value("${jdbc.initialSize}")
 	private int initialSize;
-	@Value("${datasource.minIdle}")
+	@Value("${jdbc.minIdle}")
 	private int minIdle;
-	@Value("${datasource.maxActive}")
+	@Value("${jdbc.maxActive}")
 	private int maxActive;
+	@Value("${jdbc.driver}")
+	private String driverClassName;
 
 
     @Bean(initMethod="init",destroyMethod="close")
@@ -43,6 +45,8 @@ public class DatabaseConfig {
     	datasource.setInitialSize(initialSize);
     	datasource.setMinIdle(minIdle);
     	datasource.setMaxActive(maxActive);
+    	datasource.setDriverClassName(driverClassName);
+    	
     	//配置获取连接等待超时的时间
     	datasource.setMaxWait(60000);
     	//配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
