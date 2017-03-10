@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Deque;
 import java.util.LinkedList;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
@@ -21,9 +20,7 @@ import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.ExpiringSession;
 import org.springframework.session.SessionRepository;
 
@@ -38,7 +35,7 @@ import vc.thinker.core.web.ValidateCodeHandler;
  * @author ThinkGem
  * @version 2013-5-19
  */
-public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.FormAuthenticationFilter {
+public class FormAuthenticationFilter<S extends ExpiringSession> extends org.apache.shiro.web.filter.authc.FormAuthenticationFilter {
 	
 	private static final Logger log=org.slf4j.LoggerFactory.getLogger(FormAuthenticationFilter.class);
 
@@ -63,7 +60,7 @@ public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.
 
 	@Autowired
 	@Lazy(true)
-	private SessionRepository<ExpiringSession> sessionRepository;
+	private SessionRepository<S> sessionRepository;
 	
 	private ValidateCodeHandler validateCodeHandler;
 
@@ -131,7 +128,7 @@ public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.
 				} else { // 否则踢出前者
 					kickoutSessionId = deque.removeLast();
 				}
-				ExpiringSession kickoutSession = sessionRepository.getSession(kickoutSessionId);
+				S kickoutSession = sessionRepository.getSession(kickoutSessionId);
 				if (kickoutSession != null) {
 					// 设置会话的kickout属性表示踢出了
 					kickoutSession.setAttribute(KICKOUT_URL_SESSION_ATTRIBUTE_KEY, kickoutUrl);
@@ -195,9 +192,5 @@ public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.
 
 	public void setValidateCodeHandler(ValidateCodeHandler validateCodeHandler) {
 		this.validateCodeHandler = validateCodeHandler;
-	}
-
-	public void setSessionRepository(SessionRepository<ExpiringSession> sessionRepository) {
-		this.sessionRepository = sessionRepository;
 	}
 }

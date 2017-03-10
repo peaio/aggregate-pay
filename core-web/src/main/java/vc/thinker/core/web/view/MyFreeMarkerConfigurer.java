@@ -114,6 +114,7 @@ public class MyFreeMarkerConfigurer extends FreeMarkerConfigurationFactory
 	 */
 	@Override
 	public TaglibFactory getTaglibFactory() {
+		
 		return this.taglibFactory;
 	}
 
