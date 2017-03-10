@@ -85,12 +85,6 @@
 			<artifactId>jackson-annotations</artifactId>
 		</dependency>
 
-		<!-- pojo copy -->
-		<dependency>
-			<groupId>net.sf.dozer</groupId>
-			<artifactId>dozer</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>com.sinco</groupId>
 			<artifactId>data-mybatis</artifactId>

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -24,14 +25,19 @@ public class DatabaseConfig {
 	private String username;
 	@Value("${jdbc.password}")
 	private String password;
-	@Value("${jdbc.initialSize}")
+	@Value("${jdbc.pool.initialSize}")
 	private int initialSize;
-	@Value("${jdbc.minIdle}")
+	@Value("${jdbc.pool.minIdle}")
 	private int minIdle;
-	@Value("${jdbc.maxActive}")
+	@Value("${jdbc.pool.maxActive}")
 	private int maxActive;
 	@Value("${jdbc.driver}")
 	private String driverClassName;
+	
+	@Value("${mybatis.typeAliasesPackage}")
+	private String typeAliasesPackage;
+	@Value("${mybatis.configLocation}")
+	private String mybatisConfigLocation;
 
 
     @Bean(initMethod="init",destroyMethod="close")
@@ -73,8 +79,11 @@ public class DatabaseConfig {
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
-        sessionFactory.setTypeAliasesPackage("vc.thinker.**.model");
-        sessionFactory.setConfigLocation(new ClassPathResource("/cabbage-mybatis-config.xml"));
+        sessionFactory.setTypeAliasesPackage(typeAliasesPackage);
+        if(StringUtils.isBlank(mybatisConfigLocation)){
+        	mybatisConfigLocation="/cabbage-mybatis-config.xml";
+        }
+        sessionFactory.setConfigLocation(new ClassPathResource(mybatisConfigLocation));
         return sessionFactory.getObject();
     }
 }

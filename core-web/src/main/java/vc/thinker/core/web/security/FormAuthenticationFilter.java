@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Deque;
 import java.util.LinkedList;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
@@ -18,6 +19,8 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -55,8 +58,11 @@ public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.
 
 	private Integer maxSession; // 同一个帐号最大会话数 默认空不做限制
 
-	private RedisTemplate<String, Deque<String>> redisTemplate;
+	@Autowired
+	private RedisTemplate<String, Deque<String>> dequeRedisTemplate;
 
+	@Autowired
+	@Lazy(true)
 	private SessionRepository<ExpiringSession> sessionRepository;
 	
 	private ValidateCodeHandler validateCodeHandler;
@@ -107,7 +113,7 @@ public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.
 
 			String cacheKey = getUserSessionIdListKey(userId);
 			// TODO 同步控制
-			Deque<String> deque = redisTemplate.boundValueOps(cacheKey).get();
+			Deque<String> deque = dequeRedisTemplate.boundValueOps(cacheKey).get();
 			if (deque == null) {
 				deque = new LinkedList<String>();
 			}
@@ -132,7 +138,7 @@ public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.
 					sessionRepository.save(kickoutSession);
 				}
 			}
-			redisTemplate.boundValueOps(cacheKey).set(deque);
+			dequeRedisTemplate.boundValueOps(cacheKey).set(deque);
 		}
 		return super.onLoginSuccess(token, subject, request, response);
 	}	
@@ -189,14 +195,6 @@ public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.
 
 	public void setValidateCodeHandler(ValidateCodeHandler validateCodeHandler) {
 		this.validateCodeHandler = validateCodeHandler;
-	}
-
-	public void setConnectionFactory(RedisConnectionFactory connectionFactory) {
-		redisTemplate = new RedisTemplate<String, Deque<String>>();
-		redisTemplate.setKeySerializer(new StringRedisSerializer());
-		redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-		redisTemplate.setConnectionFactory(connectionFactory);
-		redisTemplate.afterPropertiesSet();
 	}
 
 	public void setSessionRepository(SessionRepository<ExpiringSession> sessionRepository) {

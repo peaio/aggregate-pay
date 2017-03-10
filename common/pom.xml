@@ -53,13 +53,6 @@
 <!-- 			<artifactId>jackson-module-jaxb-annotations</artifactId> -->
 <!-- 		</dependency> -->
 
-		<!-- pojo copy -->
-		<dependency>
-			<groupId>net.sf.dozer</groupId>
-			<artifactId>dozer</artifactId>
-		</dependency>
-		<!-- end -->
-
 		<dependency>
 			<groupId>com.sinco</groupId>
 			<artifactId>data-mybatis</artifactId>

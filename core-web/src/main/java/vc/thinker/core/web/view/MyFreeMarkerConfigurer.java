@@ -27,15 +27,12 @@ import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 
-import com.sinco.common.utils.DateUtils;
-
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.TemplateLoader;
 import freemarker.ext.jsp.TaglibFactory;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.TemplateException;
-import freemarker.template.TemplateHashModel;
 
 /**
  * 为了兼容最新版本 FreeMarker ，改了 spring MyFreeMarkerConfigurer
@@ -100,7 +97,7 @@ public class MyFreeMarkerConfigurer extends FreeMarkerConfigurationFactory
 	@Override
 	protected void postProcessTemplateLoaders(List<TemplateLoader> templateLoaders) {
 		templateLoaders.add(new ClassTemplateLoader(MyFreeMarkerConfigurer.class, ""));
-		logger.info("ClassTemplateLoader for Spring macros added to FreeMarker configuration");
+		//super.logger.info("ClassTemplateLoader for Spring macros added to FreeMarker configuration");
 	}
 
 

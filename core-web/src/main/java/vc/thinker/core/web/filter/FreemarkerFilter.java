@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.FrameworkServlet;
 import org.springframework.web.servlet.ViewRendererServlet;
@@ -25,15 +26,18 @@ public class FreemarkerFilter implements Filter {
     private Locale locale;
     
     private String springServletName;
+    
+    @Autowired
+    private WebApplicationContext webApplicationContext;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         String localeStr = filterConfig.getInitParameter("locale");
-        String springServletName = filterConfig.getInitParameter("springServletName");
-        if(StringUtils.isBlank(springServletName)){
-        	throw new ServletException("springServletName is null");
-        }
-        this.springServletName=springServletName;
+//        String springServletName = filterConfig.getInitParameter("springServletName");
+//        if(StringUtils.isBlank(springServletName)){
+//        	throw new ServletException("springServletName is null");
+//        }
+//        this.springServletName=springServletName;
         if(StringUtils.isNotBlank(localeStr)){
             locale = new Locale(localeStr);
         }else {
@@ -45,11 +49,6 @@ public class FreemarkerFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
         try {
-        	
-        	WebApplicationContext webApplicationContext = (WebApplicationContext) 
-        			request.getServletContext().getAttribute
-        			(FrameworkServlet.SERVLET_CONTEXT_PREFIX+springServletName); 
-        	
             HttpServletRequest req = (HttpServletRequest)request;
             HttpServletResponse res = (HttpServletResponse)response;
             String name = req.getRequestURI();
