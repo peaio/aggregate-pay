@@ -74,7 +74,7 @@
 									<tr id="${item.id}" pId="${(item.parentId != office.id)?string(item.parentId,'0')}">
 										<td><a href="${ctx}/sys/office/form?id=${item.id}">${item.name}</a></td>
 										<td>
-											${fns.getDictFullLabel(item.areaId,'vc.thinker.cabbage.sys.model.DicArea',' ')}
+											${fns.getDictFullLabel(item.areaId,'vc.thinker.sys.bo.DicAreaBO',' ')}
 										</td>
 										<td>${item.code}</td>
 										<td>${fns.getDictLabel(item.type, 'sys_office_type', '无')}</td>
