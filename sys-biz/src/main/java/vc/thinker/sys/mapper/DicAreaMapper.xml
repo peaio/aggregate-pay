@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="vc.thinker.cabbage.sys.mapper.DicAreaMapper" >
-  <resultMap id="BaseResultMap" type="vc.thinker.cabbage.sys.model.DicArea" >
+<mapper namespace="vc.thinker.sys.mapper.DicAreaMapper" >
+  <resultMap id="BaseResultMap" type="vc.thinker.sys.model.DicArea" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -9,7 +9,7 @@
     <result column="language" property="language" jdbcType="INTEGER" />
     <result column="sequence" property="sequence" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="BOResultMap" type="vc.thinker.cabbage.sys.bo.DicAreaBO" extends="BaseResultMap" />
+  <resultMap id="BOResultMap" type="vc.thinker.sys.bo.DicAreaBO" extends="BaseResultMap" />
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, code, name, parent_code, language, sequence
   </sql>
-  <select id="selectByExample" parameterType="vc.thinker.cabbage.sys.model.DicAreaExample" resultMap="BOResultMap" >
+  <select id="selectByExample" parameterType="vc.thinker.sys.model.DicAreaExample" resultMap="BOResultMap" >
     select
     <if test="distinct" >
       distinct
@@ -98,13 +98,13 @@
     delete from dic_area
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="vc.thinker.cabbage.sys.model.DicAreaExample" >
+  <delete id="deleteByExample" parameterType="vc.thinker.sys.model.DicAreaExample" >
     delete from dic_area
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="vc.thinker.cabbage.sys.model.DicArea" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insert" parameterType="vc.thinker.sys.model.DicArea" useGeneratedKeys="true" keyProperty="id" >
     insert into dic_area (id, code, name, 
       parent_code, language, sequence
       )
@@ -112,7 +112,7 @@
       #{parentCode,jdbcType=VARCHAR}, #{language,jdbcType=INTEGER}, #{sequence,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="vc.thinker.cabbage.sys.model.DicArea" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelective" parameterType="vc.thinker.sys.model.DicArea" useGeneratedKeys="true" keyProperty="id" >
     insert into dic_area
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -155,7 +155,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="vc.thinker.cabbage.sys.model.DicAreaExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="vc.thinker.sys.model.DicAreaExample" resultType="java.lang.Integer" >
     select count(*) from dic_area
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -199,7 +199,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="vc.thinker.cabbage.sys.model.DicArea" >
+  <update id="updateByPrimaryKeySelective" parameterType="vc.thinker.sys.model.DicArea" >
     update dic_area
     <set >
       <if test="code != null" >
@@ -220,7 +220,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="vc.thinker.cabbage.sys.model.DicArea" >
+  <update id="updateByPrimaryKey" parameterType="vc.thinker.sys.model.DicArea" >
     update dic_area
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
