@@ -345,7 +345,7 @@
 			<dependency>
 				<groupId>com.sinco</groupId>
 				<artifactId>messager</artifactId>
-				<version>0.0.2-SNAPSHOT</version>
+				<version>0.0.3-SNAPSHOT</version>
 			</dependency>
 			<!-- thinker common end -->
 		</dependencies>
