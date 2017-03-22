@@ -18,9 +18,12 @@ public class DicConfig {
 	@Value("${redis.port}")
 	private Integer port;
 	
+	@Value("${redis.password}")
+	private String password;
+	
 	
 	@Bean public RemoteDataCached dataCached(){
-		return new RemoteDataCached(host,port);
+		return new RemoteDataCached(host,port,password);
 	}
 	
 	@Bean public DicContent dicContent(){
