@@ -17,8 +17,8 @@ public class CabbagePayConfig {
 	
 	@Bean
 	@Lazy(false)
-	public PayHandlerFactory payHandlerFactory(){
-		PayHandlerFactory pay=new PayHandlerFactory(dBPayConfigFactory());
+	public PayHandlerFactory payHandlerFactory(DBPayConfigFactory dBPayConfigFactory){
+		PayHandlerFactory pay=new PayHandlerFactory(dBPayConfigFactory);
 		return pay;
 	}	
 }

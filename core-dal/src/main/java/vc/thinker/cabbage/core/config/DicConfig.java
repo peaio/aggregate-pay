@@ -26,10 +26,10 @@ public class DicConfig {
 		return new RemoteDataCached(host,port,password);
 	}
 	
-	@Bean public DicContent dicContent(){
-		return new DicContent(dataCached());
+	@Bean public DicContent dicContent(RemoteDataCached dataCached){
+		return new DicContent(dataCached);
 	}
-	@Bean public DicNameMappingHandle dicNameMappingHandle(){
-		return new DicNameMappingHandle(dicContent());
+	@Bean public DicNameMappingHandle dicNameMappingHandle( DicContent dicContent){
+		return new DicNameMappingHandle(dicContent);
 	}
 }
