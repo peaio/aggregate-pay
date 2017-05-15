@@ -127,10 +127,9 @@ public class DictUtils {
 	 */
 	public static String getDictValue(String label, String type, String defaultLabel){
 		if (StringUtils.isNotBlank(type) && StringUtils.isNotBlank(label)){
-			for (DicBase dict : getDictList(type)){
-				if (label.equals(dict.getName())){
-					return dict.getCode();
-				}
+			DicBase dic = dicContent.getDic(type, label);
+			if(dic != null){
+				return dic.getName();
 			}
 		}
 		return defaultLabel;
