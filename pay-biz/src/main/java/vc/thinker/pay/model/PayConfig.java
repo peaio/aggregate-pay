@@ -1,16 +1,10 @@
 package vc.thinker.pay.model;
 
-import com.sinco.dic.client.model.DicBase;
 import com.sinco.mybatis.dal.model.BaseModel;
 import java.math.BigDecimal;
 
 public class PayConfig extends BaseModel {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 4116744552993860956L;
-
-	/**  **/
+    /**  **/
     private Long id;
 
     /**  **/
@@ -96,6 +90,9 @@ public class PayConfig extends BaseModel {
 
     /**  **/
     private String signType;
+
+    /** 支付宝应用ID **/
+    private String alipayAppId;
 
     public Long getId() {
         return id;
@@ -327,5 +324,13 @@ public class PayConfig extends BaseModel {
 
     public void setSignType(String signType) {
         this.signType = signType;
+    }
+
+    public String getAlipayAppId() {
+        return alipayAppId;
+    }
+
+    public void setAlipayAppId(String alipayAppId) {
+        this.alipayAppId = alipayAppId;
     }
 }

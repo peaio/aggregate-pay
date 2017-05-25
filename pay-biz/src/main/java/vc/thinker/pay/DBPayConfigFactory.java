@@ -34,6 +34,7 @@ public class DBPayConfigFactory implements PayConfigFactory{
 			alipayConfig.setAppPrivateKey(payConfig.getAppPrivateKey());
 			alipayConfig.setAppPublicKey(payConfig.getAppPublicKey());
 			alipayConfig.setPartner(payConfig.getPartner());
+			alipayConfig.setAppId(payConfig.getAlipayAppId());
 			alipayConfig.setSafeKey(payConfig.getSafeKey());
 			alipayConfig.setSellerEmail(payConfig.getSellerEmail());
 			alipayConfig.setSignType(payConfig.getSignType());

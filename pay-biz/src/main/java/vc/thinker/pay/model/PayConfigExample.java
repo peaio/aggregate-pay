@@ -1,15 +1,19 @@
 package vc.thinker.pay.model;
 
+import com.sinco.mybatis.dal.core.AbstractExample;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import vc.thinker.pay.bo.PayConfigBO;
 
-public class PayConfigExample {
+public class PayConfigExample extends AbstractExample<PayConfigBO> {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
+
+    protected String limit;
 
     public PayConfigExample() {
         oredCriteria = new ArrayList<Criteria>();
@@ -62,6 +66,22 @@ public class PayConfigExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+    }
+
+    public String getLimit() {
+        return limit;
+    }
+
+    public void setLimit(String limit) {
+        this.limit = limit;
+    }
+
+    public void setLimit(int count) {
+        this.limit = String.valueOf(count);
+    }
+
+    public void setLimit(int offset, int rows) {
+        this.limit = new StringBuilder().append(String.valueOf(offset)).append(",").append(String.valueOf(rows)).toString();
     }
 
     protected abstract static class GeneratedCriteria {
@@ -2072,6 +2092,76 @@ public class PayConfigExample {
 
         public Criteria andSignTypeNotBetween(String value1, String value2) {
             addCriterion("sign_type not between", value1, value2, "signType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdIsNull() {
+            addCriterion("alipay_app_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdIsNotNull() {
+            addCriterion("alipay_app_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdEqualTo(String value) {
+            addCriterion("alipay_app_id =", value, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdNotEqualTo(String value) {
+            addCriterion("alipay_app_id <>", value, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdGreaterThan(String value) {
+            addCriterion("alipay_app_id >", value, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdGreaterThanOrEqualTo(String value) {
+            addCriterion("alipay_app_id >=", value, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdLessThan(String value) {
+            addCriterion("alipay_app_id <", value, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdLessThanOrEqualTo(String value) {
+            addCriterion("alipay_app_id <=", value, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdLike(String value) {
+            addCriterion("alipay_app_id like", value, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdNotLike(String value) {
+            addCriterion("alipay_app_id not like", value, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdIn(List<String> values) {
+            addCriterion("alipay_app_id in", values, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdNotIn(List<String> values) {
+            addCriterion("alipay_app_id not in", values, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdBetween(String value1, String value2) {
+            addCriterion("alipay_app_id between", value1, value2, "alipayAppId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayAppIdNotBetween(String value1, String value2) {
+            addCriterion("alipay_app_id not between", value1, value2, "alipayAppId");
             return (Criteria) this;
         }
     }
