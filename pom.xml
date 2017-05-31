@@ -340,7 +340,7 @@
 			<dependency>
 				<groupId>vc.thinker</groupId>
 				<artifactId>thinker-pay</artifactId>
-				<version>0.0.2-SNAPSHOT</version>
+				<version>0.0.3-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>com.sinco</groupId>

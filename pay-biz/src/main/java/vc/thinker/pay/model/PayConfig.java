@@ -94,6 +94,9 @@ public class PayConfig extends BaseModel {
     /** 支付宝应用ID **/
     private String alipayAppId;
 
+    /** 支付宝公钥 **/
+    private String alipayPublicKey;
+
     public Long getId() {
         return id;
     }
@@ -332,5 +335,13 @@ public class PayConfig extends BaseModel {
 
     public void setAlipayAppId(String alipayAppId) {
         this.alipayAppId = alipayAppId;
+    }
+
+    public String getAlipayPublicKey() {
+        return alipayPublicKey;
+    }
+
+    public void setAlipayPublicKey(String alipayPublicKey) {
+        this.alipayPublicKey = alipayPublicKey;
     }
 }

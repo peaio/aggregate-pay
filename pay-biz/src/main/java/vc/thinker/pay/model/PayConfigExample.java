@@ -2164,6 +2164,76 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
             addCriterion("alipay_app_id not between", value1, value2, "alipayAppId");
             return (Criteria) this;
         }
+
+        public Criteria andAlipayPublicKeyIsNull() {
+            addCriterion("alipay_public_key is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyIsNotNull() {
+            addCriterion("alipay_public_key is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyEqualTo(String value) {
+            addCriterion("alipay_public_key =", value, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyNotEqualTo(String value) {
+            addCriterion("alipay_public_key <>", value, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyGreaterThan(String value) {
+            addCriterion("alipay_public_key >", value, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyGreaterThanOrEqualTo(String value) {
+            addCriterion("alipay_public_key >=", value, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyLessThan(String value) {
+            addCriterion("alipay_public_key <", value, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyLessThanOrEqualTo(String value) {
+            addCriterion("alipay_public_key <=", value, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyLike(String value) {
+            addCriterion("alipay_public_key like", value, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyNotLike(String value) {
+            addCriterion("alipay_public_key not like", value, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyIn(List<String> values) {
+            addCriterion("alipay_public_key in", values, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyNotIn(List<String> values) {
+            addCriterion("alipay_public_key not in", values, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyBetween(String value1, String value2) {
+            addCriterion("alipay_public_key between", value1, value2, "alipayPublicKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andAlipayPublicKeyNotBetween(String value1, String value2) {
+            addCriterion("alipay_public_key not between", value1, value2, "alipayPublicKey");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
