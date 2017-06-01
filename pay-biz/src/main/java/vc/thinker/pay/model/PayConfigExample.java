@@ -2234,6 +2234,76 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
             addCriterion("alipay_public_key not between", value1, value2, "alipayPublicKey");
             return (Criteria) this;
         }
+
+        public Criteria andWxCertLocalPathIsNull() {
+            addCriterion("wx_cert_local_path is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathIsNotNull() {
+            addCriterion("wx_cert_local_path is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathEqualTo(String value) {
+            addCriterion("wx_cert_local_path =", value, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathNotEqualTo(String value) {
+            addCriterion("wx_cert_local_path <>", value, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathGreaterThan(String value) {
+            addCriterion("wx_cert_local_path >", value, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathGreaterThanOrEqualTo(String value) {
+            addCriterion("wx_cert_local_path >=", value, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathLessThan(String value) {
+            addCriterion("wx_cert_local_path <", value, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathLessThanOrEqualTo(String value) {
+            addCriterion("wx_cert_local_path <=", value, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathLike(String value) {
+            addCriterion("wx_cert_local_path like", value, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathNotLike(String value) {
+            addCriterion("wx_cert_local_path not like", value, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathIn(List<String> values) {
+            addCriterion("wx_cert_local_path in", values, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathNotIn(List<String> values) {
+            addCriterion("wx_cert_local_path not in", values, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathBetween(String value1, String value2) {
+            addCriterion("wx_cert_local_path between", value1, value2, "wxCertLocalPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxCertLocalPathNotBetween(String value1, String value2) {
+            addCriterion("wx_cert_local_path not between", value1, value2, "wxCertLocalPath");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

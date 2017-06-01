@@ -97,6 +97,9 @@ public class PayConfig extends BaseModel {
     /** 支付宝公钥 **/
     private String alipayPublicKey;
 
+    /** 微信证书位置 **/
+    private String wxCertLocalPath;
+
     public Long getId() {
         return id;
     }
@@ -343,5 +346,13 @@ public class PayConfig extends BaseModel {
 
     public void setAlipayPublicKey(String alipayPublicKey) {
         this.alipayPublicKey = alipayPublicKey;
+    }
+
+    public String getWxCertLocalPath() {
+        return wxCertLocalPath;
+    }
+
+    public void setWxCertLocalPath(String wxCertLocalPath) {
+        this.wxCertLocalPath = wxCertLocalPath;
     }
 }

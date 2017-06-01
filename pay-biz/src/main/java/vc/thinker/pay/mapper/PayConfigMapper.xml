@@ -33,6 +33,7 @@
     <result column="sign_type" jdbcType="VARCHAR" property="signType" />
     <result column="alipay_app_id" jdbcType="VARCHAR" property="alipayAppId" />
     <result column="alipay_public_key" jdbcType="VARCHAR" property="alipayPublicKey" />
+    <result column="wx_cert_local_path" jdbcType="VARCHAR" property="wxCertLocalPath" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="BOResultMap" type="vc.thinker.pay.bo.PayConfigBO" />
   <sql id="Example_Where_Clause">
@@ -98,7 +99,7 @@
     content, currency_code, install, interface_type, mark, merchant_acctId, name, partner, 
     paypal_user_id, pid, poundage, rmb_key, safe_key, seller_email, spname, tenpay_key, 
     tenpay_partner, trade_mode, wx_appSecret, wx_appid, wx_paySignKey, pay_channel, sign_type, 
-    alipay_app_id, alipay_public_key
+    alipay_app_id, alipay_public_key, wx_cert_local_path
   </sql>
   <select id="selectByExample" parameterType="vc.thinker.pay.model.PayConfigExample" resultMap="BOResultMap">
     select
@@ -144,7 +145,7 @@
       tenpay_key, tenpay_partner, trade_mode, 
       wx_appSecret, wx_appid, wx_paySignKey, 
       pay_channel, sign_type, alipay_app_id, 
-      alipay_public_key)
+      alipay_public_key, wx_cert_local_path)
     values (#{id,jdbcType=BIGINT}, #{alipayRate,jdbcType=DECIMAL}, #{appPrivateKey,jdbcType=VARCHAR}, 
       #{appPublicKey,jdbcType=VARCHAR}, #{chinabankAccount,jdbcType=VARCHAR}, #{chinabankKey,jdbcType=VARCHAR}, 
       #{content,jdbcType=VARCHAR}, #{currencyCode,jdbcType=VARCHAR}, #{install,jdbcType=BIT}, 
@@ -155,7 +156,7 @@
       #{tenpayKey,jdbcType=VARCHAR}, #{tenpayPartner,jdbcType=VARCHAR}, #{tradeMode,jdbcType=INTEGER}, 
       #{wxAppsecret,jdbcType=VARCHAR}, #{wxAppid,jdbcType=VARCHAR}, #{wxPaysignkey,jdbcType=VARCHAR}, 
       #{payChannel,jdbcType=VARCHAR}, #{signType,jdbcType=VARCHAR}, #{alipayAppId,jdbcType=VARCHAR}, 
-      #{alipayPublicKey,jdbcType=VARCHAR})
+      #{alipayPublicKey,jdbcType=VARCHAR}, #{wxCertLocalPath,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyProperty="id" parameterType="vc.thinker.pay.model.PayConfig" useGeneratedKeys="true">
     insert into pay_config
@@ -253,6 +254,9 @@
       <if test="alipayPublicKey != null">
         alipay_public_key,
       </if>
+      <if test="wxCertLocalPath != null">
+        wx_cert_local_path,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -347,6 +351,9 @@
       </if>
       <if test="alipayPublicKey != null">
         #{alipayPublicKey,jdbcType=VARCHAR},
+      </if>
+      <if test="wxCertLocalPath != null">
+        #{wxCertLocalPath,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -452,6 +459,9 @@
       <if test="record.alipayPublicKey != null">
         alipay_public_key = #{record.alipayPublicKey,jdbcType=VARCHAR},
       </if>
+      <if test="record.wxCertLocalPath != null">
+        wx_cert_local_path = #{record.wxCertLocalPath,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -489,7 +499,8 @@
       pay_channel = #{record.payChannel,jdbcType=VARCHAR},
       sign_type = #{record.signType,jdbcType=VARCHAR},
       alipay_app_id = #{record.alipayAppId,jdbcType=VARCHAR},
-      alipay_public_key = #{record.alipayPublicKey,jdbcType=VARCHAR}
+      alipay_public_key = #{record.alipayPublicKey,jdbcType=VARCHAR},
+      wx_cert_local_path = #{record.wxCertLocalPath,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -587,6 +598,9 @@
       <if test="alipayPublicKey != null">
         alipay_public_key = #{alipayPublicKey,jdbcType=VARCHAR},
       </if>
+      <if test="wxCertLocalPath != null">
+        wx_cert_local_path = #{wxCertLocalPath,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -621,7 +635,8 @@
       pay_channel = #{payChannel,jdbcType=VARCHAR},
       sign_type = #{signType,jdbcType=VARCHAR},
       alipay_app_id = #{alipayAppId,jdbcType=VARCHAR},
-      alipay_public_key = #{alipayPublicKey,jdbcType=VARCHAR}
+      alipay_public_key = #{alipayPublicKey,jdbcType=VARCHAR},
+      wx_cert_local_path = #{wxCertLocalPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
