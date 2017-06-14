@@ -104,6 +104,21 @@ public class RedisCacheUtils {
 			pool.returnResource(jedis);
 		}
 	}
+	
+	/**
+	 *  key有效的秒数
+	 * @param key
+	 * @return
+	 */
+	public Long ttl(String key) {
+		
+		Jedis jedis = pool.getResource();
+		try {
+			return jedis.ttl(makeKey(key));
+		} finally {
+			jedis.close();
+		}
+	}
 	/**
 	 * incr 原子加1
 	 * @param key
