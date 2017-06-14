@@ -45,6 +45,9 @@ public class AreaDicController {
 		String root="1";
 		
 		DicAreaBO rootArea=dicContent.getTreeDic(DicAreaBO.class, root);
+		if(rootArea == null){
+			return "";
+		}
 		
 		List<ScriptEntity> oneEntitys=Lists.newArrayList();
 		
