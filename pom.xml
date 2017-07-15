@@ -12,6 +12,7 @@
 		<module>sys-common</module>
 		<module>pay-biz</module>
 		<module>common</module>
+		<module>actuator</module>
 		<module>core-web</module>
 		<module>core-dal</module>
 	</modules>
