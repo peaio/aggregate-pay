@@ -30,8 +30,10 @@ import org.springframework.scheduling.annotation.Async;
 
 import com.sinco.messager.MessageHandler;
 import com.sinco.messager.sms.AlidayuMessage;
+import com.sinco.messager.sms.AlidayuNewMessage;
 import com.sinco.messager.sms.SMSConstants;
 import com.sinco.messager.sms.SMSMessageAlidayuHandler;
+import com.sinco.messager.sms.SMSMessageNewAlidayuHandler;
 import com.sinco.messager.sms.SMSResult;
 
 import redis.clients.jedis.Protocol;
@@ -198,10 +200,18 @@ public class MsgTools implements InitializingBean,ApplicationContextAware{
 						logger.info("短信参数："+params);
 						logger.info("短信发送日期："+date+",手机号码："+mobile+",短信内容："+template.getContent());
 						
-						SMSMessageAlidayuHandler aliMsg = (SMSMessageAlidayuHandler) this.smsHandler;
-						
-						AlidayuMessage message=new AlidayuMessage(smsFreeSignName, thirdTemplateId, params);
-						boolean ret = aliMsg.sendMessage(mobile, message);
+						boolean ret =false;
+						if(this.smsHandler instanceof SMSMessageAlidayuHandler){
+							SMSMessageAlidayuHandler aliMsg = (SMSMessageAlidayuHandler) this.smsHandler;
+							AlidayuMessage message=new AlidayuMessage(smsFreeSignName, thirdTemplateId, params);
+							ret = aliMsg.sendMessage(mobile, message);
+						}else if(this.smsHandler instanceof SMSMessageNewAlidayuHandler){
+							SMSMessageNewAlidayuHandler aliMsg = (SMSMessageNewAlidayuHandler) this.smsHandler;
+							AlidayuNewMessage message=new AlidayuNewMessage(smsFreeSignName, thirdTemplateId, params);
+							ret = aliMsg.sendMessage(mobile, message);
+						}else {
+							logger.info("暂不支持的发送方式[{}]",this.smsHandler);
+						}
 						logger.info("短信发送日期："+date+",短信发送结果："+ret);
 						//添加手机限制次数
 						addDaySendCount(mark, mobile);
