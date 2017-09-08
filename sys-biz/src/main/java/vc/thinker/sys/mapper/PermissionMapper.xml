@@ -15,7 +15,7 @@
   <resultMap id="BOResultMap" type="vc.thinker.sys.bo.PermissionBO" extends="BaseResultMap" />
   
   <select id="findByUid" resultMap="BOResultMap" >
-  	SELECT p.*
+  	SELECT distinct p.*
 	FROM
 		sys_permission p
 	INNER JOIN sys_role_permission rp ON p.id = rp.permission_id
