@@ -141,16 +141,16 @@
 						</div>
 					</div>
 					
-					<div class="form-group">
+<!-- 					<div class="form-group">
 						<label class="col-md-3 control-label">数据范围:</label>
 						<div class="col-md-4">
 							<@form.select path="dataScope"  cssClass="form-control">
 								<@form.options items=fns.getDictList('sys_data_scope') itemLabel="label" itemValue="value" htmlEscape=false/>
 							</@form.select>
 						</div>
-					</div>
+					</div> -->
 					
-					<div class="form-group">
+<!-- 					<div class="form-group">
 						<label class="col-md-3 control-label">角色类型:</label>
 						<div class="col-md-4">
 							<@form.select path="roleType"  cssClass="form-control">
@@ -160,9 +160,9 @@
 								<@form.option value="1">普通角色</@form.option>
 							</@form.select>
 						</div>
-					</div>
+					</div> -->
 					
-					<div class="form-group">
+<!-- 					<div class="form-group">
 						<label class="col-md-3 control-label">是否系统数据:</label>
 						<div class="col-md-4">
 							<@form.select path="isSys"  cssClass="form-control">
@@ -171,7 +171,7 @@
 								<@form.option value="0">否</@form.option>
 							</@form.select>
 						</div>
-					</div>
+					</div> -->
 					
 					<div class="form-group">
 						<label class="col-md-3 control-label">是否可用:</label>

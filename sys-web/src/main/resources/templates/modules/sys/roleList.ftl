@@ -53,9 +53,9 @@
 						<th>角色名称</th>
 						<th>角色标识</th>
 						<th>归属机构</th>
-						<th>数据范围</th>
+<!-- 						<th>数据范围</th>
 						<th>角色类型</th>
-						<th>是否系统数据</th>
+						<th>是否系统数据</th> -->
 						<th>是否可用</th>
 						<@shiro.hasPermission name="sys:role:edit"><th>操作</th></@shiro.hasPermission>
 					</tr>
@@ -64,7 +64,7 @@
 							<td><a href="form?id=${role.id}">${role.name!}</a></td>
 							<td>${role.code!}</td>
 							<td>${role.officeName!}</td>
-							<td>
+							<!-- <td>
 								${fns.getDictLabel(role.dataScope, 'sys_data_scope', '无')}
 							</td>
 							<td>
@@ -86,7 +86,7 @@
 									否
 									</#if>
 								</#if>
-							</td>
+							</td> -->
 							<td>
 								<#if role.useable??>
 									<#if role.useable==1>
