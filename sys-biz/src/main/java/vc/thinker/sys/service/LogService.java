@@ -50,6 +50,11 @@ public class LogService {
 	}
 	
 	@Transactional(readOnly = false)
+	public void insertLog(Log log){
+		logDao.save(log);
+	}
+	
+	@Transactional(readOnly = false)
 	public void insertLoginLog(LoginLog loginLog)
 	{
 			try {
