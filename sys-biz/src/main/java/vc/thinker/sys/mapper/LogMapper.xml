@@ -47,7 +47,7 @@
 		LEFT JOIN sys_office c ON su.company_id = c.id
 		LEFT JOIN sys_office d ON su.office_id = d.id
 		<include refid="findByPageWhere"/>
-		order by l.id desc
+		order by l.create_date desc
 	</select>
 	
 	<sql id="findByPageWhere">
