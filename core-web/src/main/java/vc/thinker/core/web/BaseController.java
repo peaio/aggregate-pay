@@ -86,11 +86,19 @@ public abstract class BaseController {
 	 * @param messages 消息
 	 */
 	protected void addMessage(Model model, String... messages) {
+		addMessage(model, MessageType.success, messages);
+	}
+	/**
+	 * 添加Model消息
+	 * @param messages 消息
+	 */
+	protected void addMessage(Model model,MessageType messagesType,String... messages) {
 		StringBuilder sb = new StringBuilder();
 		for (String message : messages){
 			sb.append(message).append(messages.length>1?"<br/>":"");
 		}
 		model.addAttribute("message", sb.toString());
+		model.addAttribute("messageType", messagesType.name());
 	}
 	
 	/**
@@ -114,10 +122,20 @@ public abstract class BaseController {
 	 * 添加Model消息
 	 * @param messages 消息
 	 */
+	protected void addMessageCode(RedirectAttributes model,MessageType messagesType,HttpServletRequest request,String code) {
+		RequestContext context=new RequestContext(request);
+		addMessage(model, messagesType,context.getMessage(code));
+	}
+	
+	/**
+	 * 添加Model消息
+	 * @param messages 消息
+	 */
 	protected void addMessageCode(RedirectAttributes model,HttpServletRequest request,String code) {
 		RequestContext context=new RequestContext(request);
 		addMessage(model, context.getMessage(code));
 	}
+	
 	/**
 	 * 添加Model消息
 	 * @param messages 消息
@@ -126,17 +144,33 @@ public abstract class BaseController {
 		RequestContext context=new RequestContext(request);
 		addMessage(model, context.getMessage(code,param));
 	}
+	/**
+	 * 添加Model消息
+	 * @param messages 消息
+	 */
+	protected void addMessageCode(RedirectAttributes model,MessageType messagesType,HttpServletRequest request,String code,String ... param) {
+		RequestContext context=new RequestContext(request);
+		addMessage(model,messagesType,context.getMessage(code,param));
+	}
 	
 	/**
 	 * 添加Flash消息
      * @param messages 消息
 	 */
-	protected void addMessage(RedirectAttributes redirectAttributes, String... messages) {
+	protected void addMessage(RedirectAttributes redirectAttributes,MessageType messagesType,String... messages) {
 		StringBuilder sb = new StringBuilder();
 		for (String message : messages){
 			sb.append(message).append(messages.length>1?"<br/>":"");
 		}
 		redirectAttributes.addFlashAttribute("message", sb.toString());
+		redirectAttributes.addFlashAttribute("messageType", messagesType.name());
+	}
+	/**
+	 * 添加Flash消息
+	 * @param messages 消息
+	 */
+	protected void addMessage(RedirectAttributes redirectAttributes, String... messages) {
+		addMessage(redirectAttributes, MessageType.success, messages);
 	}
 	
 	/**
@@ -165,6 +199,10 @@ public abstract class BaseController {
 				setValue(DateUtils.parseDate(text));
 			}
 		});
+	}
+	
+	public static enum MessageType{
+		warning,success,danger,info
 	}
 	
 }
