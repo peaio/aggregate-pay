@@ -2304,6 +2304,76 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
             addCriterion("wx_cert_local_path not between", value1, value2, "wxCertLocalPath");
             return (Criteria) this;
         }
+
+        public Criteria andWxRsaPublicIsNull() {
+            addCriterion("wx_rsa_public is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicIsNotNull() {
+            addCriterion("wx_rsa_public is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicEqualTo(String value) {
+            addCriterion("wx_rsa_public =", value, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicNotEqualTo(String value) {
+            addCriterion("wx_rsa_public <>", value, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicGreaterThan(String value) {
+            addCriterion("wx_rsa_public >", value, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicGreaterThanOrEqualTo(String value) {
+            addCriterion("wx_rsa_public >=", value, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicLessThan(String value) {
+            addCriterion("wx_rsa_public <", value, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicLessThanOrEqualTo(String value) {
+            addCriterion("wx_rsa_public <=", value, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicLike(String value) {
+            addCriterion("wx_rsa_public like", value, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicNotLike(String value) {
+            addCriterion("wx_rsa_public not like", value, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicIn(List<String> values) {
+            addCriterion("wx_rsa_public in", values, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicNotIn(List<String> values) {
+            addCriterion("wx_rsa_public not in", values, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicBetween(String value1, String value2) {
+            addCriterion("wx_rsa_public between", value1, value2, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxRsaPublicNotBetween(String value1, String value2) {
+            addCriterion("wx_rsa_public not between", value1, value2, "wxRsaPublic");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>vc.thinker</groupId>
 	<artifactId>cabbage-core</artifactId>
-	<version>2.0.1-SNAPSHOT</version>
+	<version>2.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>cabbage-core</name>
 	<modules>
@@ -341,7 +341,7 @@
 			<dependency>
 				<groupId>vc.thinker</groupId>
 				<artifactId>thinker-pay</artifactId>
-				<version>0.0.3-SNAPSHOT</version>
+				<version>0.0.4-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>com.sinco</groupId>

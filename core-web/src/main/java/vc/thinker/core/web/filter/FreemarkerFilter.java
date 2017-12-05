@@ -56,6 +56,9 @@ public class FreemarkerFilter implements Filter {
             FreeMarkerViewResolver viewResolver = webApplicationContext.getBean(FreeMarkerViewResolver.class);
             FreeMarkerView view = (FreeMarkerView) viewResolver.resolveViewName(name, locale);
             
+            if(view == null){
+            	throw new RuntimeException("view "+name+"not find");
+            }
             //关闭暴露，这里和之前写的属性冲突
             view.setExposeRequestAttributes(false);
             view.setExposeSessionAttributes(false);

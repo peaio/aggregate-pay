@@ -10,10 +10,10 @@ public class PayConfig extends BaseModel {
     /**  **/
     private BigDecimal alipayRate;
 
-    /**  **/
+    /** 支付的应用私钥 **/
     private String appPrivateKey;
 
-    /**  **/
+    /** 支付的支付宝公钥 **/
     private String appPublicKey;
 
     /**  **/
@@ -94,11 +94,14 @@ public class PayConfig extends BaseModel {
     /** 支付宝应用ID **/
     private String alipayAppId;
 
-    /** 支付宝公钥 **/
+    /** 支付宝开放平台的公钥，注意由于开放平台使用的私钥和支付是一个，配制应用公钥时需要和支付的公钥是一样的 **/
     private String alipayPublicKey;
 
     /** 微信证书位置 **/
     private String wxCertLocalPath;
+
+    /** 微信RSA公钥 **/
+    private String wxRsaPublic;
 
     public Long getId() {
         return id;
@@ -354,5 +357,13 @@ public class PayConfig extends BaseModel {
 
     public void setWxCertLocalPath(String wxCertLocalPath) {
         this.wxCertLocalPath = wxCertLocalPath;
+    }
+
+    public String getWxRsaPublic() {
+        return wxRsaPublic;
+    }
+
+    public void setWxRsaPublic(String wxRsaPublic) {
+        this.wxRsaPublic = wxRsaPublic;
     }
 }
