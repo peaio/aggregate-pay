@@ -47,7 +47,7 @@ public class DBPayConfigFactory implements PayConfigFactory{
 			weixinConfig.setWxAppId(payConfig.getWxAppid());
 			weixinConfig.setWxPaysignkey(payConfig.getWxPaysignkey());
 			weixinConfig.setCertLocalPath(payConfig.getWxCertLocalPath());
-			weixinConfig.setPayBankPublicKey(weixinConfig.getPayBankPublicKey());
+			weixinConfig.setPayBankPublicKey(payConfig.getWxRsaPublic());
 			result=weixinConfig;
 			break;
 		}
