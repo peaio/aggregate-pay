@@ -34,7 +34,7 @@ public class MobileBO {
 		}
 	}
 	
-	public MobileBO(String mobile,String countryCode){
+	public MobileBO(String countryCode,String mobile){
 		country=CountryUtil.get(countryCode);
 		if(country == null){
 			throw new IllegalArgumentException(mobile+"格式错误，未找到对应的国家");
