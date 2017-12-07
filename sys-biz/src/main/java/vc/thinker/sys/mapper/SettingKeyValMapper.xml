@@ -11,12 +11,12 @@
   </resultMap>
   <resultMap extends="BaseResultMap" id="BOResultMap" type="vc.thinker.sys.bo.SettingKeyValBO" />
    <insert id="insertUpdate" parameterType="vc.thinker.sys.model.SettingKeyVal">
-    insert into sys_setting_key_val (type, key, value, 
+    insert into sys_setting_key_val (fkey, type, fvalue, 
       update_time, create_time, info
       )
-    values (#{type,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+    values (#{fkey,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{fvalue,jdbcType=VARCHAR}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{info,jdbcType=VARCHAR}
-      )ON DUPLICATE KEY UPDATE value= #{value,jdbcType=VARCHAR},
+      )ON DUPLICATE KEY UPDATE fvalue= #{fvalue,jdbcType=VARCHAR},
       update_time=#{updateTime,jdbcType=TIMESTAMP},info=#{info,jdbcType=VARCHAR}
   </insert>
   
