@@ -25,18 +25,19 @@ public class Generator {
 				"root", "admin123",
 				"com.mysql.jdbc.Driver");
 
-		String itemPath = "D:\\workspace\\cabbage\\sinco-cabbage\\sys-biz\\src\\main\\java";
+//		String itemPath = "D:\\workspace\\cabbage\\sinco-cabbage\\sys-biz\\src\\main\\java";
+		String itemPath = "/Users/james/git/cabbage-core/cabbage-core/sys-biz/src/main/java";
 
 		String rootPackage = "vc.thinker.sys";
 
 		MyBatisGeneratorTool2 tool = new MyBatisGeneratorTool2(jdbc, itemPath, rootPackage);
-		tool.setGeneratorBO(false);
-		tool.setGeneratorDao(false);
-		//tool.setIncrementIdName("uuid");
+		tool.setGeneratorBO(true);
+		tool.setGeneratorDao(true);
+		tool.setGeneratorMapperJava(true);
 		
 		List<GeneratorTable> tableList=Lists.newArrayList(
 //				new GeneratorTable("simserver_center", "user_customer_member", "CustomerMember")
-				new GeneratorTable("cabbage", "sys_role", "Role")
+				new GeneratorTable("cabbage", "sys_setting_key_val", "SettingKeyVal")
 				);
 
 		tool.generator(tableList);
