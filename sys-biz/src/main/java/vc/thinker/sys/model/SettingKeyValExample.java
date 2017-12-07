@@ -125,73 +125,73 @@ public class SettingKeyValExample extends AbstractExample<SettingKeyValBO> {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andKeyIsNull() {
-            addCriterion("key is null");
+        public Criteria andFkeyIsNull() {
+            addCriterion("fkey is null");
             return (Criteria) this;
         }
 
-        public Criteria andKeyIsNotNull() {
-            addCriterion("key is not null");
+        public Criteria andFkeyIsNotNull() {
+            addCriterion("fkey is not null");
             return (Criteria) this;
         }
 
-        public Criteria andKeyEqualTo(String value) {
-            addCriterion("key =", value, "key");
+        public Criteria andFkeyEqualTo(String value) {
+            addCriterion("fkey =", value, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotEqualTo(String value) {
-            addCriterion("key <>", value, "key");
+        public Criteria andFkeyNotEqualTo(String value) {
+            addCriterion("fkey <>", value, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyGreaterThan(String value) {
-            addCriterion("key >", value, "key");
+        public Criteria andFkeyGreaterThan(String value) {
+            addCriterion("fkey >", value, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyGreaterThanOrEqualTo(String value) {
-            addCriterion("key >=", value, "key");
+        public Criteria andFkeyGreaterThanOrEqualTo(String value) {
+            addCriterion("fkey >=", value, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLessThan(String value) {
-            addCriterion("key <", value, "key");
+        public Criteria andFkeyLessThan(String value) {
+            addCriterion("fkey <", value, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLessThanOrEqualTo(String value) {
-            addCriterion("key <=", value, "key");
+        public Criteria andFkeyLessThanOrEqualTo(String value) {
+            addCriterion("fkey <=", value, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLike(String value) {
-            addCriterion("key like", value, "key");
+        public Criteria andFkeyLike(String value) {
+            addCriterion("fkey like", value, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotLike(String value) {
-            addCriterion("key not like", value, "key");
+        public Criteria andFkeyNotLike(String value) {
+            addCriterion("fkey not like", value, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyIn(List<String> values) {
-            addCriterion("key in", values, "key");
+        public Criteria andFkeyIn(List<String> values) {
+            addCriterion("fkey in", values, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotIn(List<String> values) {
-            addCriterion("key not in", values, "key");
+        public Criteria andFkeyNotIn(List<String> values) {
+            addCriterion("fkey not in", values, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyBetween(String value1, String value2) {
-            addCriterion("key between", value1, value2, "key");
+        public Criteria andFkeyBetween(String value1, String value2) {
+            addCriterion("fkey between", value1, value2, "fkey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotBetween(String value1, String value2) {
-            addCriterion("key not between", value1, value2, "key");
+        public Criteria andFkeyNotBetween(String value1, String value2) {
+            addCriterion("fkey not between", value1, value2, "fkey");
             return (Criteria) this;
         }
 
@@ -265,73 +265,73 @@ public class SettingKeyValExample extends AbstractExample<SettingKeyValBO> {
             return (Criteria) this;
         }
 
-        public Criteria andValueIsNull() {
-            addCriterion("value is null");
+        public Criteria andFvalueIsNull() {
+            addCriterion("fvalue is null");
             return (Criteria) this;
         }
 
-        public Criteria andValueIsNotNull() {
-            addCriterion("value is not null");
+        public Criteria andFvalueIsNotNull() {
+            addCriterion("fvalue is not null");
             return (Criteria) this;
         }
 
-        public Criteria andValueEqualTo(String value) {
-            addCriterion("value =", value, "value");
+        public Criteria andFvalueEqualTo(String value) {
+            addCriterion("fvalue =", value, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotEqualTo(String value) {
-            addCriterion("value <>", value, "value");
+        public Criteria andFvalueNotEqualTo(String value) {
+            addCriterion("fvalue <>", value, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThan(String value) {
-            addCriterion("value >", value, "value");
+        public Criteria andFvalueGreaterThan(String value) {
+            addCriterion("fvalue >", value, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThanOrEqualTo(String value) {
-            addCriterion("value >=", value, "value");
+        public Criteria andFvalueGreaterThanOrEqualTo(String value) {
+            addCriterion("fvalue >=", value, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThan(String value) {
-            addCriterion("value <", value, "value");
+        public Criteria andFvalueLessThan(String value) {
+            addCriterion("fvalue <", value, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThanOrEqualTo(String value) {
-            addCriterion("value <=", value, "value");
+        public Criteria andFvalueLessThanOrEqualTo(String value) {
+            addCriterion("fvalue <=", value, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueLike(String value) {
-            addCriterion("value like", value, "value");
+        public Criteria andFvalueLike(String value) {
+            addCriterion("fvalue like", value, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotLike(String value) {
-            addCriterion("value not like", value, "value");
+        public Criteria andFvalueNotLike(String value) {
+            addCriterion("fvalue not like", value, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueIn(List<String> values) {
-            addCriterion("value in", values, "value");
+        public Criteria andFvalueIn(List<String> values) {
+            addCriterion("fvalue in", values, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotIn(List<String> values) {
-            addCriterion("value not in", values, "value");
+        public Criteria andFvalueNotIn(List<String> values) {
+            addCriterion("fvalue not in", values, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueBetween(String value1, String value2) {
-            addCriterion("value between", value1, value2, "value");
+        public Criteria andFvalueBetween(String value1, String value2) {
+            addCriterion("fvalue between", value1, value2, "fvalue");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotBetween(String value1, String value2) {
-            addCriterion("value not between", value1, value2, "value");
+        public Criteria andFvalueNotBetween(String value1, String value2) {
+            addCriterion("fvalue not between", value1, value2, "fvalue");
             return (Criteria) this;
         }
 

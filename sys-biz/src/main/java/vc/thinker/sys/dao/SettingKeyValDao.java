@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -43,7 +44,7 @@ public class SettingKeyValDao {
 			throw new IllegalArgumentException(e);
 		}
 		for (SettingKeyValBO settingKeyValBO : list) {
-			String fieldName=settingKeyValBO.getKey();
+			String fieldName=settingKeyValBO.getFkey();
 			Field field=ReflectionUtils.findField(c, fieldName);
 			if(field == null){
 				throw new IllegalArgumentException("Class["+c+"] not find "+fieldName);
@@ -51,20 +52,22 @@ public class SettingKeyValDao {
 			ReflectionUtils.makeAccessible(field);
 			
 			Class<?> fieldType=field.getType();
-			if(fieldType == Long.class){
-				Long val=Long.parseLong(settingKeyValBO.getValue());
-				ReflectionUtils.setField(field, result, val);
-			}else if(fieldType == String.class){
-				ReflectionUtils.setField(field, result, settingKeyValBO.getValue());
-			}else if(fieldType == Integer.class){
-				Integer val=Integer.parseInt(settingKeyValBO.getValue());
-				ReflectionUtils.setField(field, result, val);
-			}else if(fieldType == BigDecimal.class){
-				BigDecimal val=new BigDecimal(settingKeyValBO.getValue());
-				ReflectionUtils.setField(field, result, val);
-			}else if(fieldType == Boolean.class){
-				Boolean val=Boolean.parseBoolean(settingKeyValBO.getValue());
-				ReflectionUtils.setField(field, result, val);
+			if(StringUtils.isNotBlank(settingKeyValBO.getFvalue())){
+				if(fieldType == Long.class){
+					Long val=Long.parseLong(settingKeyValBO.getFvalue());
+					ReflectionUtils.setField(field, result, val);
+				}else if(fieldType == String.class){
+					ReflectionUtils.setField(field, result, settingKeyValBO.getFvalue());
+				}else if(fieldType == Integer.class){
+					Integer val=Integer.parseInt(settingKeyValBO.getFvalue());
+					ReflectionUtils.setField(field, result, val);
+				}else if(fieldType == BigDecimal.class){
+					BigDecimal val=new BigDecimal(settingKeyValBO.getFvalue());
+					ReflectionUtils.setField(field, result, val);
+				}else if(fieldType == Boolean.class){
+					Boolean val=Boolean.parseBoolean(settingKeyValBO.getFvalue());
+					ReflectionUtils.setField(field, result, val);
+				}
 			}
 		}
 		return result;
@@ -76,8 +79,8 @@ public class SettingKeyValDao {
 		List<SettingKeyVal> modelList=Lists.newArrayList();
 		keyValMap.forEach((k,v)->{
 			SettingKeyVal kv=new SettingKeyVal();
-			kv.setKey(k);
-			kv.setValue(v);
+			kv.setFkey(k);
+			kv.setFvalue(v);
 			modelList.add(kv);
 		});
 		
@@ -93,7 +96,7 @@ public class SettingKeyValDao {
 	
 	public int delByKeysAndType(Set<String> keys,String type){
 		SettingKeyValExample example=new SettingKeyValExample();
-		example.createCriteria().andKeyIn(new ArrayList<>(keys)).andTypeEqualTo(type);
+		example.createCriteria().andFkeyIn(new ArrayList<>(keys)).andTypeEqualTo(type);
 		return mapper.deleteByExample(example);
 	}
 
@@ -127,13 +130,13 @@ public class SettingKeyValDao {
 
 	public List<SettingKeyValBO> findByKey(java.lang.String key){
 		SettingKeyValExample example=new SettingKeyValExample();
-		example.createCriteria().andKeyEqualTo(key);
+		example.createCriteria().andFkeyEqualTo(key);
 		return mapper.selectByExample(example);
 	}
 	
 	public int deleteByKey(java.lang.String key){
 		SettingKeyValExample example=new SettingKeyValExample();
-		example.createCriteria().andKeyEqualTo(key);
+		example.createCriteria().andFkeyEqualTo(key);
 		return mapper.deleteByExample(example);
 	}
 	public List<SettingKeyValBO> findByType(java.lang.String type){

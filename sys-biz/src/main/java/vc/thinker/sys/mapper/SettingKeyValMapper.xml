@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="vc.thinker.sys.mapper.SettingKeyValMapper">
   <resultMap id="BaseResultMap" type="vc.thinker.sys.model.SettingKeyVal">
-    <id column="key" jdbcType="VARCHAR" property="key" />
+    <id column="fkey" jdbcType="VARCHAR" property="fkey" />
     <id column="type" jdbcType="VARCHAR" property="type" />
-    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="fvalue" jdbcType="VARCHAR" property="fvalue" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="info" jdbcType="VARCHAR" property="info" />
@@ -79,7 +79,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    key, type, value, update_time, create_time, info
+    fkey, type, fvalue, update_time, create_time, info
   </sql>
   <select id="selectByExample" parameterType="vc.thinker.sys.model.SettingKeyValExample" resultMap="BOResultMap">
     select
@@ -102,12 +102,12 @@
     select 
     <include refid="Base_Column_List" />
     from sys_setting_key_val
-    where key = #{key,jdbcType=VARCHAR}
+    where fkey = #{fkey,jdbcType=VARCHAR}
       and type = #{type,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="map">
     delete from sys_setting_key_val
-    where key = #{key,jdbcType=VARCHAR}
+    where fkey = #{fkey,jdbcType=VARCHAR}
       and type = #{type,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="vc.thinker.sys.model.SettingKeyValExample">
@@ -117,24 +117,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="vc.thinker.sys.model.SettingKeyVal">
-    insert into sys_setting_key_val (key, type, value, 
+    insert into sys_setting_key_val (fkey, type, fvalue, 
       update_time, create_time, info
       )
-    values (#{key,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+    values (#{fkey,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{fvalue,jdbcType=VARCHAR}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{info,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="vc.thinker.sys.model.SettingKeyVal">
     insert into sys_setting_key_val
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="key != null">
-        key,
+      <if test="fkey != null">
+        fkey,
       </if>
       <if test="type != null">
         type,
       </if>
-      <if test="value != null">
-        value,
+      <if test="fvalue != null">
+        fvalue,
       </if>
       <if test="updateTime != null">
         update_time,
@@ -147,14 +147,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="key != null">
-        #{key,jdbcType=VARCHAR},
+      <if test="fkey != null">
+        #{fkey,jdbcType=VARCHAR},
       </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
       </if>
-      <if test="value != null">
-        #{value,jdbcType=VARCHAR},
+      <if test="fvalue != null">
+        #{fvalue,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
@@ -176,14 +176,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sys_setting_key_val
     <set>
-      <if test="record.key != null">
-        key = #{record.key,jdbcType=VARCHAR},
+      <if test="record.fkey != null">
+        fkey = #{record.fkey,jdbcType=VARCHAR},
       </if>
       <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
       </if>
-      <if test="record.value != null">
-        value = #{record.value,jdbcType=VARCHAR},
+      <if test="record.fvalue != null">
+        fvalue = #{record.fvalue,jdbcType=VARCHAR},
       </if>
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -201,9 +201,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update sys_setting_key_val
-    set key = #{record.key,jdbcType=VARCHAR},
+    set fkey = #{record.fkey,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
-      value = #{record.value,jdbcType=VARCHAR},
+      fvalue = #{record.fvalue,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       info = #{record.info,jdbcType=VARCHAR}
@@ -214,8 +214,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="vc.thinker.sys.model.SettingKeyVal">
     update sys_setting_key_val
     <set>
-      <if test="value != null">
-        value = #{value,jdbcType=VARCHAR},
+      <if test="fvalue != null">
+        fvalue = #{fvalue,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -227,16 +227,16 @@
         info = #{info,jdbcType=VARCHAR},
       </if>
     </set>
-    where key = #{key,jdbcType=VARCHAR}
+    where fkey = #{fkey,jdbcType=VARCHAR}
       and type = #{type,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="vc.thinker.sys.model.SettingKeyVal">
     update sys_setting_key_val
-    set value = #{value,jdbcType=VARCHAR},
+    set fvalue = #{fvalue,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       info = #{info,jdbcType=VARCHAR}
-    where key = #{key,jdbcType=VARCHAR}
+    where fkey = #{fkey,jdbcType=VARCHAR}
       and type = #{type,jdbcType=VARCHAR}
   </update>
 </mapper>

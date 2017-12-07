@@ -5,13 +5,13 @@ import java.util.Date;
 
 public class SettingKeyVal extends BaseModel {
     /** key值，对应对象的字段名 **/
-    private String key;
+    private String fkey;
 
     /** 类型 **/
     private String type;
 
     /**  **/
-    private String value;
+    private String fvalue;
 
     /**  **/
     private Date updateTime;
@@ -22,12 +22,12 @@ public class SettingKeyVal extends BaseModel {
     /** 说明 **/
     private String info;
 
-    public String getKey() {
-        return key;
+    public String getFkey() {
+        return fkey;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setFkey(String fkey) {
+        this.fkey = fkey;
     }
 
     public String getType() {
@@ -38,12 +38,12 @@ public class SettingKeyVal extends BaseModel {
         this.type = type;
     }
 
-    public String getValue() {
-        return value;
+    public String getFvalue() {
+        return fvalue;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setFvalue(String fvalue) {
+        this.fvalue = fvalue;
     }
 
     public Date getUpdateTime() {
