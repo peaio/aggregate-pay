@@ -31,9 +31,9 @@ public class Generator {
 		String rootPackage = "vc.thinker.sys";
 
 		MyBatisGeneratorTool2 tool = new MyBatisGeneratorTool2(jdbc, itemPath, rootPackage);
-		tool.setGeneratorBO(true);
-		tool.setGeneratorDao(true);
-		tool.setGeneratorMapperJava(true);
+		tool.setGeneratorBO(false);
+		tool.setGeneratorDao(false);
+		tool.setGeneratorMapperJava(false);
 		
 		List<GeneratorTable> tableList=Lists.newArrayList(
 //				new GeneratorTable("simserver_center", "user_customer_member", "CustomerMember")

@@ -4,11 +4,11 @@ import com.sinco.mybatis.dal.model.BaseModel;
 import java.util.Date;
 
 public class SettingKeyVal extends BaseModel {
-    /** 类型 **/
-    private String type;
-
     /** key值，对应对象的字段名 **/
     private String key;
+
+    /** 类型 **/
+    private String type;
 
     /**  **/
     private String value;
@@ -22,20 +22,20 @@ public class SettingKeyVal extends BaseModel {
     /** 说明 **/
     private String info;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getKey() {
         return key;
     }
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getValue() {

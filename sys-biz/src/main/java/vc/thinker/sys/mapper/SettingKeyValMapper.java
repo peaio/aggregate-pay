@@ -14,7 +14,7 @@ public interface SettingKeyValMapper {
 
     int deleteByExample(SettingKeyValExample example);
 
-    int deleteByPrimaryKey(String type);
+    int deleteByPrimaryKey(@Param("key") String key, @Param("type") String type);
 
     int insert(SettingKeyVal record);
 
@@ -22,7 +22,7 @@ public interface SettingKeyValMapper {
 
     List<SettingKeyValBO> selectByExample(SettingKeyValExample example);
 
-    SettingKeyValBO selectByPrimaryKey(String type);
+    SettingKeyValBO selectByPrimaryKey(@Param("key") String key, @Param("type") String type);
 
     int updateByExampleSelective(@Param("record") SettingKeyVal record, @Param("example") SettingKeyValExample example);
 

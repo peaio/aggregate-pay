@@ -24,7 +24,7 @@ public class SettingKeyValDao {
 
 	@Autowired
 	private SettingKeyValMapper mapper;
-	
+
 	/**
 	 * 根据 type 查找设置
 	 * @param c
@@ -97,14 +97,10 @@ public class SettingKeyValDao {
 		return mapper.deleteByExample(example);
 	}
 
+
    /** generate code begin**/
 	public List<SettingKeyValBO> findAll(){
 		SettingKeyValExample example=new SettingKeyValExample();
-		return mapper.selectByExample(example);
-	}
-	List<SettingKeyValBO> findAll(Iterable<java.lang.String> ids){
-		SettingKeyValExample example=new SettingKeyValExample();
-		example.createCriteria().andTypeIn(Lists.newArrayList(ids));
 		return mapper.selectByExample(example);
 	}
 	
@@ -122,61 +118,41 @@ public class SettingKeyValDao {
 	}
 	
 	public SettingKeyVal save(SettingKeyVal record){
-		if(!exists(record.getType())){
-			mapper.insertSelective(record);
-		}else{
-			mapper.updateByPrimaryKeySelective(record);
-		}
+		
+		mapper.insertSelective(record);
+		
 		return record;
 	}
 	
 
-	public void update(SettingKeyVal record) {
-		mapper.updateByPrimaryKeySelective(record);
+	public List<SettingKeyValBO> findByKey(java.lang.String key){
+		SettingKeyValExample example=new SettingKeyValExample();
+		example.createCriteria().andKeyEqualTo(key);
+		return mapper.selectByExample(example);
 	}
 	
-	public SettingKeyValBO findOne(java.lang.String id){
-		return mapper.selectByPrimaryKey(id);
-	}
-
-	public boolean exists(java.lang.String id){
-		if(id == null){
-			return false;
-		}
+	public int deleteByKey(java.lang.String key){
 		SettingKeyValExample example=new SettingKeyValExample();
-		example.createCriteria().andTypeEqualTo(id);
-		return mapper.countByExample(example) > 0;
+		example.createCriteria().andKeyEqualTo(key);
+		return mapper.deleteByExample(example);
+	}
+	public List<SettingKeyValBO> findByType(java.lang.String type){
+		SettingKeyValExample example=new SettingKeyValExample();
+		example.createCriteria().andTypeEqualTo(type);
+		return mapper.selectByExample(example);
 	}
 	
-	 public void delete(java.lang.String id){
-		 mapper.deleteByPrimaryKey(id);
-	 }
-	 
-	 public void remove(java.lang.String id){
-		 mapper.deleteByPrimaryKey(id);
-	 }
-
-	public void delete(SettingKeyVal entity){
-		 mapper.deleteByPrimaryKey(entity.getType());
-	}
-
-	public void delete(Iterable<SettingKeyVal> entities){
-		List<java.lang.String> ids=Lists.newArrayList();
-		for (SettingKeyVal  entity: entities) {
-			ids.add(entity.getType());
-		}
-		deleteByIds(ids);
-	}
-	
-	public void deleteByIds(Iterable<java.lang.String> ids){
+	public int deleteByType(java.lang.String type){
 		SettingKeyValExample example=new SettingKeyValExample();
-		example.createCriteria().andTypeIn(Lists.newArrayList(ids));
-		 mapper.deleteByExample(example);
+		example.createCriteria().andTypeEqualTo(type);
+		return mapper.deleteByExample(example);
 	}
 
-	public void deleteAll(){
-		SettingKeyValExample example=new SettingKeyValExample();
-		mapper.deleteByExample(example);
+	public int delete( java.lang.String key, java.lang.String type){
+		return mapper.deleteByPrimaryKey(key,type);
+	}
+	public SettingKeyValBO findOne( java.lang.String key, java.lang.String type){
+		return mapper.selectByPrimaryKey(key,type);
 	}
 	/** generate code end**/
 }
