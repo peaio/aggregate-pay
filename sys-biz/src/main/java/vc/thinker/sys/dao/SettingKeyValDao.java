@@ -78,10 +78,13 @@ public class SettingKeyValDao {
 		
 		List<SettingKeyVal> modelList=Lists.newArrayList();
 		keyValMap.forEach((k,v)->{
-			SettingKeyVal kv=new SettingKeyVal();
-			kv.setFkey(k);
-			kv.setFvalue(v);
-			modelList.add(kv);
+			if(StringUtils.isNotBlank(v)){
+				SettingKeyVal kv=new SettingKeyVal();
+				kv.setFkey(k);
+				kv.setFvalue(v);
+				kv.setType(type);
+				modelList.add(kv);
+			}
 		});
 		
 		if(modelList.isEmpty()){
