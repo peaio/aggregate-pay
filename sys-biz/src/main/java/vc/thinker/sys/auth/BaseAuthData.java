@@ -35,7 +35,7 @@ public abstract class BaseAuthData implements AuthData{
 		StringBuilder where=new StringBuilder();
 
 		// 超级管理员，跳过权限过滤
-		if (AdminUtils.isAdmin(user)){
+		if (AdminUtils.isAdmin(user.getId())){
 			log.info("超级管理员,未进行权限控制");
 			return sql;
 		}

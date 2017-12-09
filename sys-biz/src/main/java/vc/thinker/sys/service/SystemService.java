@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import com.sinco.common.area.Country;
 import com.sinco.common.security.PasswordUtil;
 
 import vc.thinker.core.security.SecurityMappingModel;
@@ -98,14 +99,16 @@ public class SystemService{
 	 * @return
 	 */
 	@Transactional(readOnly = false)
-	public Long createUser(String accountType,Long companyId,Long officeId,String dataScope, String loginName, String password, String requestIp,String country,User currentUser) {
+	public Long createUser(String accountType,Long companyId,Long officeId,String dataScope, String loginName, String password, String requestIp,Country country,User currentUser) {
 		User user = new User();
 		user.setIsDeleted(false);
 		user.setRegistIp(requestIp);
 		user.setCompanyId(companyId);
 		user.setOfficeId(officeId);
 		user.setDataScope(dataScope);
-		user.setCountry(country);
+		if(country != null){
+			user.setCountry(country.getCode());
+		}
 		if(currentUser != null){
 			user.setCurrentUserId(currentUser.getId().toString());
 		}
@@ -134,8 +137,21 @@ public class SystemService{
 	 * @return
 	 */
 	@Transactional(readOnly = false)
-	public Long createUser(String accountType, String loginName, String password, String requestIp,String country,User currentUser) {
+	public Long createUser(String accountType, String loginName, String password, String requestIp,Country country,User currentUser) {
 		return createUser(accountType, null, null, null, loginName, password, requestIp,country,currentUser);
+	}
+	/**
+	 * 创建用户
+	 * @param userType
+	 * @param accountType
+	 * @param loginName
+	 * @param password
+	 * @param requestIp
+	 * @return
+	 */
+	@Transactional(readOnly = false)
+	public Long createUser(String accountType, String loginName, String password, String requestIp,Country country) {
+		return createUser(accountType, null, null, null, loginName, password, requestIp,country,null);
 	}
 	
 	/**
@@ -180,7 +196,7 @@ public class SystemService{
 		User user=userDao.findOne(uid);
 		List<RoleBO> list = null;
 		if(user != null){
-			if(AdminUtils.isAdmin(user)){
+			if(AdminUtils.isAdmin(user.getId())){
 				list = roleDao.findByDataScope(SysUserContant.USER_TYPE_1);
 			}else{
 				list = roleDao.findUserRole(user.getId(), SysUserContant.USER_TYPE_1);
@@ -192,7 +208,7 @@ public class SystemService{
 		User user=userDao.findOne(uid);
 		List<RoleBO> list = null;
 		if(user != null){
-			if(AdminUtils.isAdmin(user)){
+			if(AdminUtils.isAdmin(user.getId())){
 				list = roleDao.findByDataScope(userType);
 			}else{
 				list = roleDao.findUserRole(user.getId(), userType);
@@ -347,7 +363,7 @@ public class SystemService{
 	public List<PermissionBO> findPermByUid(User user,Integer userType){
 		List<PermissionBO> list = null;
 		//查找管理员权限 
-		if(AdminUtils.isAdmin(user)){
+		if(AdminUtils.isAdmin(user.getId())){
 			list=permissionDao.findPermByUserType(userType);
 		}else{
 			list=permissionDao.findByUid(user.getId(),userType);

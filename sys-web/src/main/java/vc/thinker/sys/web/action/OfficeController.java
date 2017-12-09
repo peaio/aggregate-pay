@@ -71,7 +71,7 @@ public class OfficeController extends BaseController {
 	@RequestMapping({"list"})
 	public String list(Office office, Model model) {
 		User user = UserUtils.getUser();
-		if(AdminUtils.isAdmin(user)){
+		if(AdminUtils.isAdmin(user.getId())){
 			office.setId(1L);
 		}else{
 			office.setId(user.getOfficeId());

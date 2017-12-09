@@ -136,7 +136,7 @@ public class RoleController extends BaseController {
 	public String delete(@RequestParam Long id, RedirectAttributes redirectAttributes) {
 		
 		User user=UserUtils.getUser();
-		if (!AdminUtils.isAdmin(user) && systemService.isUserHaveRole(user.getId(), id)){
+		if (!AdminUtils.isAdmin(user.getId()) && systemService.isUserHaveRole(user.getId(), id)){
 			addMessage(redirectAttributes, "删除角色失败, 不能删除当前用户所在角色");
 		}else{
 			systemService.deleteRole(id);

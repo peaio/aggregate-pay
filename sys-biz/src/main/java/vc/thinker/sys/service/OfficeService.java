@@ -53,7 +53,7 @@ public class OfficeService{
 	public List<OfficeBO> findAll(User user){
 		
 		List<OfficeBO> officeList = new ArrayList<OfficeBO>(); 
-		if (AdminUtils.isAdmin(user)){
+		if (AdminUtils.isAdmin(user.getId())){
 			officeList = officeDao.findAll();
 		}else{
 			if( user.getOfficeId() != null){
