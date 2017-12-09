@@ -64,6 +64,17 @@ public class SystemService{
 	private PermissionDao permissionDao;
 	@Autowired
 	private UserAccountDao accountDao;
+	/**
+	 * 修改基础用户国家
+	 * @param uid
+	 * @param country
+	 */
+	public void updateCountry(Long uid,Country country){
+		User user=new User();
+		user.setId(uid);
+		user.setCountry(country.getCode());
+		userDao.update(user);
+	}
 
 	/**
 	 * 根据角色查找用户
