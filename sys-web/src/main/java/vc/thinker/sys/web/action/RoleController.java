@@ -40,6 +40,7 @@ import vc.thinker.sys.model.User;
 import vc.thinker.sys.service.OfficeService;
 import vc.thinker.sys.service.SystemService;
 import vc.thinker.sys.service.UserAccountService;
+import vc.thinker.sys.utils.AdminUtils;
 import vc.thinker.utils.CommUtil;
 import vc.thinker.web.utils.UserUtils;
 
@@ -135,7 +136,7 @@ public class RoleController extends BaseController {
 	public String delete(@RequestParam Long id, RedirectAttributes redirectAttributes) {
 		
 		User user=UserUtils.getUser();
-		if (!user.isAdmin() && systemService.isUserHaveRole(user.getId(), id)){
+		if (!AdminUtils.isAdmin(user) && systemService.isUserHaveRole(user.getId(), id)){
 			addMessage(redirectAttributes, "删除角色失败, 不能删除当前用户所在角色");
 		}else{
 			systemService.deleteRole(id);

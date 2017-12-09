@@ -1,22 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="vc.thinker.sys.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="vc.thinker.sys.model.User" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
-    <result column="regist_IP" property="registIp" jdbcType="VARCHAR" />
-    <result column="company_id" property="companyId" jdbcType="BIGINT" />
-    <result column="office_id" property="officeId" jdbcType="BIGINT" />
-    <result column="data_scope" property="dataScope" jdbcType="CHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vc.thinker.sys.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="vc.thinker.sys.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="regist_IP" jdbcType="VARCHAR" property="registIp" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="office_id" jdbcType="BIGINT" property="officeId" />
+    <result column="data_scope" jdbcType="CHAR" property="dataScope" />
+    <result column="invitation_code" jdbcType="VARCHAR" property="invitationCode" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
   </resultMap>
-  <resultMap id="BOResultMap" type="vc.thinker.sys.bo.UserBO" extends="BaseResultMap" >
-  	<result column="login_name" property="loginName" jdbcType="TIMESTAMP" />
-  	<association property="company" columnPrefix="company_" resultMap="vc.thinker.sys.mapper.OfficeMapper.BaseResultMap"></association>
-  	<association property="office" columnPrefix="office_" resultMap="vc.thinker.sys.mapper.OfficeMapper.BaseResultMap"></association>
+  <resultMap extends="BaseResultMap" id="BOResultMap" type="vc.thinker.sys.bo.UserBO">
+  	<result column="login_name" jdbcType="TIMESTAMP" property="loginName" />
+  	<association columnPrefix="company_" property="company" resultMap="vc.thinker.sys.mapper.OfficeMapper.BaseResultMap" />
+  	<association columnPrefix="office_" property="office" resultMap="vc.thinker.sys.mapper.OfficeMapper.BaseResultMap" />
   </resultMap>
   
   
@@ -47,25 +49,25 @@
 	order by u.id
   </select>
   
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -76,25 +78,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -105,162 +107,185 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
-    id, create_time, create_by, update_time, update_by, is_deleted, regist_IP, 
-    company_id, office_id, data_scope
+  <sql id="Base_Column_List">
+    id, create_time, create_by, update_time, update_by, is_deleted, regist_IP, company_id, 
+    office_id, data_scope, invitation_code, country
   </sql>
-  <select id="selectByExample" parameterType="vc.thinker.sys.model.UserExample" resultMap="BOResultMap" >
+  <select id="selectByExample" parameterType="vc.thinker.sys.model.UserExample" resultMap="BOResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from sys_user
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+    <if test="limit != null">
+      limit ${limit}
+    </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BOResultMap" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BOResultMap">
     select 
     <include refid="Base_Column_List" />
     from sys_user
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from sys_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="vc.thinker.sys.model.UserExample" >
+  <delete id="deleteByExample" parameterType="vc.thinker.sys.model.UserExample">
     delete from sys_user
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="vc.thinker.sys.model.User" useGeneratedKeys="true" keyProperty="id" >
-    insert into sys_user (id, create_time, 
-      create_by, update_time, update_by, 
-      is_deleted, regist_IP, company_id, 
-      office_id, data_scope)
-    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=BIT}, #{registIp,jdbcType=VARCHAR}, #{companyId,jdbcType=BIGINT}, 
-      #{officeId,jdbcType=BIGINT}, #{dataScope,jdbcType=CHAR})
+  <insert id="insert" keyProperty="id" parameterType="vc.thinker.sys.model.User" useGeneratedKeys="true">
+    insert into sys_user (id, create_time, create_by, 
+      update_time, update_by, is_deleted, 
+      regist_IP, company_id, office_id, 
+      data_scope, invitation_code, country
+      )
+    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, 
+      #{registIp,jdbcType=VARCHAR}, #{companyId,jdbcType=BIGINT}, #{officeId,jdbcType=BIGINT}, 
+      #{dataScope,jdbcType=CHAR}, #{invitationCode,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="vc.thinker.sys.model.User" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelective" keyProperty="id" parameterType="vc.thinker.sys.model.User" useGeneratedKeys="true">
     insert into sys_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         create_by,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         update_by,
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         is_deleted,
       </if>
-      <if test="registIp != null" >
+      <if test="registIp != null">
         regist_IP,
       </if>
-      <if test="companyId != null" >
+      <if test="companyId != null">
         company_id,
       </if>
-      <if test="officeId != null" >
+      <if test="officeId != null">
         office_id,
       </if>
-      <if test="dataScope != null" >
+      <if test="dataScope != null">
         data_scope,
       </if>
+      <if test="invitationCode != null">
+        invitation_code,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         #{updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         #{isDeleted,jdbcType=BIT},
       </if>
-      <if test="registIp != null" >
+      <if test="registIp != null">
         #{registIp,jdbcType=VARCHAR},
       </if>
-      <if test="companyId != null" >
+      <if test="companyId != null">
         #{companyId,jdbcType=BIGINT},
       </if>
-      <if test="officeId != null" >
+      <if test="officeId != null">
         #{officeId,jdbcType=BIGINT},
       </if>
-      <if test="dataScope != null" >
+      <if test="dataScope != null">
         #{dataScope,jdbcType=CHAR},
+      </if>
+      <if test="invitationCode != null">
+        #{invitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="vc.thinker.sys.model.UserExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="vc.thinker.sys.model.UserExample" resultType="java.lang.Integer">
     select count(*) from sys_user
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update sys_user
-    <set >
-      <if test="record.id != null" >
+    <set>
+      <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.createTime != null" >
+      <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.createBy != null" >
+      <if test="record.createBy != null">
         create_by = #{record.createBy,jdbcType=VARCHAR},
       </if>
-      <if test="record.updateTime != null" >
+      <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.updateBy != null" >
+      <if test="record.updateBy != null">
         update_by = #{record.updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="record.isDeleted != null" >
+      <if test="record.isDeleted != null">
         is_deleted = #{record.isDeleted,jdbcType=BIT},
       </if>
-      <if test="record.registIp != null" >
+      <if test="record.registIp != null">
         regist_IP = #{record.registIp,jdbcType=VARCHAR},
       </if>
-      <if test="record.companyId != null" >
+      <if test="record.companyId != null">
         company_id = #{record.companyId,jdbcType=BIGINT},
       </if>
-      <if test="record.officeId != null" >
+      <if test="record.officeId != null">
         office_id = #{record.officeId,jdbcType=BIGINT},
       </if>
-      <if test="record.dataScope != null" >
+      <if test="record.dataScope != null">
         data_scope = #{record.dataScope,jdbcType=CHAR},
       </if>
+      <if test="record.invitationCode != null">
+        invitation_code = #{record.invitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null">
+        country = #{record.country,jdbcType=VARCHAR},
+      </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update sys_user
     set id = #{record.id,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -271,48 +296,55 @@
       regist_IP = #{record.registIp,jdbcType=VARCHAR},
       company_id = #{record.companyId,jdbcType=BIGINT},
       office_id = #{record.officeId,jdbcType=BIGINT},
-      data_scope = #{record.dataScope,jdbcType=CHAR}
-    <if test="_parameter != null" >
+      data_scope = #{record.dataScope,jdbcType=CHAR},
+      invitation_code = #{record.invitationCode,jdbcType=VARCHAR},
+      country = #{record.country,jdbcType=VARCHAR}
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="vc.thinker.sys.model.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="vc.thinker.sys.model.User">
     update sys_user
-    <set >
-      <if test="createTime != null" >
+    <set>
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         update_by = #{updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         is_deleted = #{isDeleted,jdbcType=BIT},
       </if>
-      <if test="registIp != null" >
+      <if test="registIp != null">
         regist_IP = #{registIp,jdbcType=VARCHAR},
       </if>
-      <if test="companyId != null" >
+      <if test="companyId != null">
         company_id = #{companyId,jdbcType=BIGINT},
       </if>
-      <if test="officeId != null" >
+      <if test="officeId != null">
         office_id = #{officeId,jdbcType=BIGINT},
       </if>
-      <if test="dataScope != null" >
+      <if test="dataScope != null">
         data_scope = #{dataScope,jdbcType=CHAR},
+      </if>
+      <if test="invitationCode != null">
+        invitation_code = #{invitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="vc.thinker.sys.model.User" >
+  <update id="updateByPrimaryKey" parameterType="vc.thinker.sys.model.User">
     update sys_user
-    set 
-      create_time = #{createTime,jdbcType=TIMESTAMP},
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
       create_by = #{createBy,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
@@ -320,7 +352,9 @@
       regist_IP = #{registIp,jdbcType=VARCHAR},
       company_id = #{companyId,jdbcType=BIGINT},
       office_id = #{officeId,jdbcType=BIGINT},
-      data_scope = #{dataScope,jdbcType=CHAR}
+      data_scope = #{dataScope,jdbcType=CHAR},
+      invitation_code = #{invitationCode,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

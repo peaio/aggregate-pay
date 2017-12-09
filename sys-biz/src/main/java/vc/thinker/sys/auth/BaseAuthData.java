@@ -9,6 +9,7 @@ import com.sinco.data.core.auth.AuthData;
 import vc.thinker.sys.bo.RoleBO;
 import vc.thinker.sys.bo.UserBO;
 import vc.thinker.sys.contants.AuthConstants;
+import vc.thinker.sys.utils.AdminUtils;
 
 /**
  * 用户数据权限过滤基类
@@ -34,7 +35,7 @@ public abstract class BaseAuthData implements AuthData{
 		StringBuilder where=new StringBuilder();
 
 		// 超级管理员，跳过权限过滤
-		if (user.isAdmin()){
+		if (AdminUtils.isAdmin(user)){
 			log.info("超级管理员,未进行权限控制");
 			return sql;
 		}

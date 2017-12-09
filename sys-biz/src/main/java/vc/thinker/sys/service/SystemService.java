@@ -38,6 +38,7 @@ import vc.thinker.sys.model.RolePermission;
 import vc.thinker.sys.model.User;
 import vc.thinker.sys.model.UserAccount;
 import vc.thinker.sys.model.UserRole;
+import vc.thinker.sys.utils.AdminUtils;
 
 /**
  * 系统管理，安全相关实体的管理类,包括用户、角色、菜单.
@@ -97,13 +98,14 @@ public class SystemService{
 	 * @return
 	 */
 	@Transactional(readOnly = false)
-	public Long createUser(String accountType,Long companyId,Long officeId,String dataScope, String loginName, String password, String requestIp,User currentUser) {
+	public Long createUser(String accountType,Long companyId,Long officeId,String dataScope, String loginName, String password, String requestIp,String country,User currentUser) {
 		User user = new User();
 		user.setIsDeleted(false);
 		user.setRegistIp(requestIp);
 		user.setCompanyId(companyId);
 		user.setOfficeId(officeId);
 		user.setDataScope(dataScope);
+		user.setCountry(country);
 		if(currentUser != null){
 			user.setCurrentUserId(currentUser.getId().toString());
 		}
@@ -132,8 +134,8 @@ public class SystemService{
 	 * @return
 	 */
 	@Transactional(readOnly = false)
-	public Long createUser(String accountType, String loginName, String password, String requestIp,User currentUser) {
-		return createUser(accountType, null, null, null, loginName, password, requestIp, currentUser);
+	public Long createUser(String accountType, String loginName, String password, String requestIp,String country,User currentUser) {
+		return createUser(accountType, null, null, null, loginName, password, requestIp,country,currentUser);
 	}
 	
 	/**
@@ -178,7 +180,7 @@ public class SystemService{
 		User user=userDao.findOne(uid);
 		List<RoleBO> list = null;
 		if(user != null){
-			if(user.isAdmin()){
+			if(AdminUtils.isAdmin(user)){
 				list = roleDao.findByDataScope(SysUserContant.USER_TYPE_1);
 			}else{
 				list = roleDao.findUserRole(user.getId(), SysUserContant.USER_TYPE_1);
@@ -190,7 +192,7 @@ public class SystemService{
 		User user=userDao.findOne(uid);
 		List<RoleBO> list = null;
 		if(user != null){
-			if(user.isAdmin()){
+			if(AdminUtils.isAdmin(user)){
 				list = roleDao.findByDataScope(userType);
 			}else{
 				list = roleDao.findUserRole(user.getId(), userType);
@@ -345,7 +347,7 @@ public class SystemService{
 	public List<PermissionBO> findPermByUid(User user,Integer userType){
 		List<PermissionBO> list = null;
 		//查找管理员权限 
-		if(user.isAdmin()){
+		if(AdminUtils.isAdmin(user)){
 			list=permissionDao.findPermByUserType(userType);
 		}else{
 			list=permissionDao.findByUid(user.getId(),userType);

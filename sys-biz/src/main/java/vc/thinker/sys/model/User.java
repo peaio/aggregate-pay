@@ -1,22 +1,23 @@
 package vc.thinker.sys.model;
 
+import com.sinco.mybatis.dal.model.BaseModel;
 import java.util.Date;
 
-import com.sinco.mybatis.dal.model.DataModel;
-
-public class User extends DataModel {
-	
-	// 数据范围（1：所有数据；2：所在公司及以下数据；3：所在公司数据；4：所在部门及以下数据；5：所在部门数据；8：仅本人数据；9：按明细设置）
-	public static final String DATA_SCOPE_ALL = "1";
-	public static final String DATA_SCOPE_COMPANY_AND_CHILD = "2";
-	public static final String DATA_SCOPE_COMPANY = "3";
-	public static final String DATA_SCOPE_OFFICE_AND_CHILD = "4";
-	public static final String DATA_SCOPE_OFFICE = "5";
-	public static final String DATA_SCOPE_SELF = "8";
-	public static final String DATA_SCOPE_CUSTOM = "9";
-	
+public class User extends BaseModel {
     /** id **/
     private Long id;
+
+    /** 创建时间 **/
+    private Date createTime;
+
+    /** 创建人 **/
+    private String createBy;
+
+    /** 修改时间 **/
+    private Date updateTime;
+
+    /** 修改人 **/
+    private String updateBy;
 
     /** 是否删除 **/
     private Boolean isDeleted;
@@ -32,23 +33,12 @@ public class User extends DataModel {
 
     /**  **/
     private String dataScope;
-    
-    public boolean isAdmin(){
-    	return User.isAdmin(this);
-    }
-    
-    public static boolean isAdmin(User user){
-    	if(user != null && user.getId() != null && user.getId().equals(1L)){
-    		return true;
-    	}
-    	return false;
-    }
-    public static boolean isAdmin(Long uid){
-    	if(uid != null && uid.equals(1)){
-    		return true;
-    	}
-    	return false;
-    }
+
+    /** 邀请码 **/
+    private String invitationCode;
+
+    /** 国家 **/
+    private String country;
 
     public Long getId() {
         return id;
@@ -128,5 +118,21 @@ public class User extends DataModel {
 
     public void setDataScope(String dataScope) {
         this.dataScope = dataScope;
+    }
+
+    public String getInvitationCode() {
+        return invitationCode;
+    }
+
+    public void setInvitationCode(String invitationCode) {
+        this.invitationCode = invitationCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

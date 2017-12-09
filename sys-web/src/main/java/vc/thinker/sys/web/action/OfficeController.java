@@ -32,6 +32,7 @@ import vc.thinker.sys.contants.SysUserContant;
 import vc.thinker.sys.model.Office;
 import vc.thinker.sys.model.User;
 import vc.thinker.sys.service.OfficeService;
+import vc.thinker.sys.utils.AdminUtils;
 import vc.thinker.web.utils.UserUtils;
 
 /**
@@ -70,7 +71,7 @@ public class OfficeController extends BaseController {
 	@RequestMapping({"list"})
 	public String list(Office office, Model model) {
 		User user = UserUtils.getUser();
-		if(user.isAdmin()){
+		if(AdminUtils.isAdmin(user)){
 			office.setId(1L);
 		}else{
 			office.setId(user.getOfficeId());

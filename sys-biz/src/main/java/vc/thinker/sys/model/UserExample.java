@@ -1,15 +1,19 @@
 package vc.thinker.sys.model;
 
+import com.sinco.mybatis.dal.core.AbstractExample;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import vc.thinker.sys.bo.UserBO;
 
-public class UserExample {
+public class UserExample extends AbstractExample<UserBO> {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
+
+    protected String limit;
 
     public UserExample() {
         oredCriteria = new ArrayList<Criteria>();
@@ -62,6 +66,22 @@ public class UserExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+    }
+
+    public String getLimit() {
+        return limit;
+    }
+
+    public void setLimit(String limit) {
+        this.limit = limit;
+    }
+
+    public void setLimit(int count) {
+        this.limit = String.valueOf(count);
+    }
+
+    public void setLimit(int offset, int rows) {
+        this.limit = new StringBuilder().append(String.valueOf(offset)).append(",").append(String.valueOf(rows)).toString();
     }
 
     protected abstract static class GeneratedCriteria {
@@ -162,66 +182,6 @@ public class UserExample {
 
         public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeIsNull() {
-            addCriterion("user_type is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeIsNotNull() {
-            addCriterion("user_type is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeEqualTo(Integer value) {
-            addCriterion("user_type =", value, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeNotEqualTo(Integer value) {
-            addCriterion("user_type <>", value, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeGreaterThan(Integer value) {
-            addCriterion("user_type >", value, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("user_type >=", value, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeLessThan(Integer value) {
-            addCriterion("user_type <", value, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("user_type <=", value, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeIn(List<Integer> values) {
-            addCriterion("user_type in", values, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeNotIn(List<Integer> values) {
-            addCriterion("user_type not in", values, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeBetween(Integer value1, Integer value2) {
-            addCriterion("user_type between", value1, value2, "userType");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("user_type not between", value1, value2, "userType");
             return (Criteria) this;
         }
 
@@ -802,6 +762,146 @@ public class UserExample {
 
         public Criteria andDataScopeNotBetween(String value1, String value2) {
             addCriterion("data_scope not between", value1, value2, "dataScope");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeIsNull() {
+            addCriterion("invitation_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeIsNotNull() {
+            addCriterion("invitation_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeEqualTo(String value) {
+            addCriterion("invitation_code =", value, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeNotEqualTo(String value) {
+            addCriterion("invitation_code <>", value, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeGreaterThan(String value) {
+            addCriterion("invitation_code >", value, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("invitation_code >=", value, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeLessThan(String value) {
+            addCriterion("invitation_code <", value, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeLessThanOrEqualTo(String value) {
+            addCriterion("invitation_code <=", value, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeLike(String value) {
+            addCriterion("invitation_code like", value, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeNotLike(String value) {
+            addCriterion("invitation_code not like", value, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeIn(List<String> values) {
+            addCriterion("invitation_code in", values, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeNotIn(List<String> values) {
+            addCriterion("invitation_code not in", values, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeBetween(String value1, String value2) {
+            addCriterion("invitation_code between", value1, value2, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvitationCodeNotBetween(String value1, String value2) {
+            addCriterion("invitation_code not between", value1, value2, "invitationCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryIsNull() {
+            addCriterion("country is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryIsNotNull() {
+            addCriterion("country is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryEqualTo(String value) {
+            addCriterion("country =", value, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryNotEqualTo(String value) {
+            addCriterion("country <>", value, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryGreaterThan(String value) {
+            addCriterion("country >", value, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryGreaterThanOrEqualTo(String value) {
+            addCriterion("country >=", value, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryLessThan(String value) {
+            addCriterion("country <", value, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryLessThanOrEqualTo(String value) {
+            addCriterion("country <=", value, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryLike(String value) {
+            addCriterion("country like", value, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryNotLike(String value) {
+            addCriterion("country not like", value, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryIn(List<String> values) {
+            addCriterion("country in", values, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryNotIn(List<String> values) {
+            addCriterion("country not in", values, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryBetween(String value1, String value2) {
+            addCriterion("country between", value1, value2, "country");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountryNotBetween(String value1, String value2) {
+            addCriterion("country not between", value1, value2, "country");
             return (Criteria) this;
         }
     }

@@ -8,7 +8,6 @@ package vc.thinker.sys.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +18,7 @@ import vc.thinker.sys.bo.OfficeBO;
 import vc.thinker.sys.dao.OfficeDao;
 import vc.thinker.sys.model.Office;
 import vc.thinker.sys.model.User;
+import vc.thinker.sys.utils.AdminUtils;
 
 /**
  * 机构Service
@@ -53,7 +53,7 @@ public class OfficeService{
 	public List<OfficeBO> findAll(User user){
 		
 		List<OfficeBO> officeList = new ArrayList<OfficeBO>(); 
-		if (user.isAdmin() ){
+		if (AdminUtils.isAdmin(user)){
 			officeList = officeDao.findAll();
 		}else{
 			if( user.getOfficeId() != null){

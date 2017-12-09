@@ -37,7 +37,8 @@ public class Generator {
 		
 		List<GeneratorTable> tableList=Lists.newArrayList(
 //				new GeneratorTable("simserver_center", "user_customer_member", "CustomerMember")
-				new GeneratorTable("cabbage", "sys_setting_key_val", "SettingKeyVal")
+//				new GeneratorTable("cabbage", "sys_setting_key_val", "SettingKeyVal")
+				new GeneratorTable("cabbage", "sys_user", "User")
 				);
 
 		tool.generator(tableList);
