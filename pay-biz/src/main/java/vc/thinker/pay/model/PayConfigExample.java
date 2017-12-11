@@ -385,146 +385,6 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
             return (Criteria) this;
         }
 
-        public Criteria andChinabankAccountIsNull() {
-            addCriterion("chinabank_account is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountIsNotNull() {
-            addCriterion("chinabank_account is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountEqualTo(String value) {
-            addCriterion("chinabank_account =", value, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountNotEqualTo(String value) {
-            addCriterion("chinabank_account <>", value, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountGreaterThan(String value) {
-            addCriterion("chinabank_account >", value, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountGreaterThanOrEqualTo(String value) {
-            addCriterion("chinabank_account >=", value, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountLessThan(String value) {
-            addCriterion("chinabank_account <", value, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountLessThanOrEqualTo(String value) {
-            addCriterion("chinabank_account <=", value, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountLike(String value) {
-            addCriterion("chinabank_account like", value, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountNotLike(String value) {
-            addCriterion("chinabank_account not like", value, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountIn(List<String> values) {
-            addCriterion("chinabank_account in", values, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountNotIn(List<String> values) {
-            addCriterion("chinabank_account not in", values, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountBetween(String value1, String value2) {
-            addCriterion("chinabank_account between", value1, value2, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankAccountNotBetween(String value1, String value2) {
-            addCriterion("chinabank_account not between", value1, value2, "chinabankAccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyIsNull() {
-            addCriterion("chinabank_key is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyIsNotNull() {
-            addCriterion("chinabank_key is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyEqualTo(String value) {
-            addCriterion("chinabank_key =", value, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyNotEqualTo(String value) {
-            addCriterion("chinabank_key <>", value, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyGreaterThan(String value) {
-            addCriterion("chinabank_key >", value, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyGreaterThanOrEqualTo(String value) {
-            addCriterion("chinabank_key >=", value, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyLessThan(String value) {
-            addCriterion("chinabank_key <", value, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyLessThanOrEqualTo(String value) {
-            addCriterion("chinabank_key <=", value, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyLike(String value) {
-            addCriterion("chinabank_key like", value, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyNotLike(String value) {
-            addCriterion("chinabank_key not like", value, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyIn(List<String> values) {
-            addCriterion("chinabank_key in", values, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyNotIn(List<String> values) {
-            addCriterion("chinabank_key not in", values, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyBetween(String value1, String value2) {
-            addCriterion("chinabank_key between", value1, value2, "chinabankKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andChinabankKeyNotBetween(String value1, String value2) {
-            addCriterion("chinabank_key not between", value1, value2, "chinabankKey");
-            return (Criteria) this;
-        }
-
         public Criteria andContentIsNull() {
             addCriterion("content is null");
             return (Criteria) this;
@@ -725,66 +585,6 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
             return (Criteria) this;
         }
 
-        public Criteria andInterfaceTypeIsNull() {
-            addCriterion("interface_type is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeIsNotNull() {
-            addCriterion("interface_type is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeEqualTo(Integer value) {
-            addCriterion("interface_type =", value, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeNotEqualTo(Integer value) {
-            addCriterion("interface_type <>", value, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeGreaterThan(Integer value) {
-            addCriterion("interface_type >", value, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("interface_type >=", value, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeLessThan(Integer value) {
-            addCriterion("interface_type <", value, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("interface_type <=", value, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeIn(List<Integer> values) {
-            addCriterion("interface_type in", values, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeNotIn(List<Integer> values) {
-            addCriterion("interface_type not in", values, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeBetween(Integer value1, Integer value2) {
-            addCriterion("interface_type between", value1, value2, "interfaceType");
-            return (Criteria) this;
-        }
-
-        public Criteria andInterfaceTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("interface_type not between", value1, value2, "interfaceType");
-            return (Criteria) this;
-        }
-
         public Criteria andMarkIsNull() {
             addCriterion("mark is null");
             return (Criteria) this;
@@ -852,76 +652,6 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
 
         public Criteria andMarkNotBetween(String value1, String value2) {
             addCriterion("mark not between", value1, value2, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidIsNull() {
-            addCriterion("merchant_acctId is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidIsNotNull() {
-            addCriterion("merchant_acctId is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidEqualTo(String value) {
-            addCriterion("merchant_acctId =", value, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidNotEqualTo(String value) {
-            addCriterion("merchant_acctId <>", value, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidGreaterThan(String value) {
-            addCriterion("merchant_acctId >", value, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidGreaterThanOrEqualTo(String value) {
-            addCriterion("merchant_acctId >=", value, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidLessThan(String value) {
-            addCriterion("merchant_acctId <", value, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidLessThanOrEqualTo(String value) {
-            addCriterion("merchant_acctId <=", value, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidLike(String value) {
-            addCriterion("merchant_acctId like", value, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidNotLike(String value) {
-            addCriterion("merchant_acctId not like", value, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidIn(List<String> values) {
-            addCriterion("merchant_acctId in", values, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidNotIn(List<String> values) {
-            addCriterion("merchant_acctId not in", values, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidBetween(String value1, String value2) {
-            addCriterion("merchant_acctId between", value1, value2, "merchantAcctid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMerchantAcctidNotBetween(String value1, String value2) {
-            addCriterion("merchant_acctId not between", value1, value2, "merchantAcctid");
             return (Criteria) this;
         }
 
@@ -1065,146 +795,6 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
             return (Criteria) this;
         }
 
-        public Criteria andPaypalUserIdIsNull() {
-            addCriterion("paypal_user_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdIsNotNull() {
-            addCriterion("paypal_user_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdEqualTo(String value) {
-            addCriterion("paypal_user_id =", value, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdNotEqualTo(String value) {
-            addCriterion("paypal_user_id <>", value, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdGreaterThan(String value) {
-            addCriterion("paypal_user_id >", value, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdGreaterThanOrEqualTo(String value) {
-            addCriterion("paypal_user_id >=", value, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdLessThan(String value) {
-            addCriterion("paypal_user_id <", value, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdLessThanOrEqualTo(String value) {
-            addCriterion("paypal_user_id <=", value, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdLike(String value) {
-            addCriterion("paypal_user_id like", value, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdNotLike(String value) {
-            addCriterion("paypal_user_id not like", value, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdIn(List<String> values) {
-            addCriterion("paypal_user_id in", values, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdNotIn(List<String> values) {
-            addCriterion("paypal_user_id not in", values, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdBetween(String value1, String value2) {
-            addCriterion("paypal_user_id between", value1, value2, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPaypalUserIdNotBetween(String value1, String value2) {
-            addCriterion("paypal_user_id not between", value1, value2, "paypalUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidIsNull() {
-            addCriterion("pid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidIsNotNull() {
-            addCriterion("pid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidEqualTo(String value) {
-            addCriterion("pid =", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidNotEqualTo(String value) {
-            addCriterion("pid <>", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidGreaterThan(String value) {
-            addCriterion("pid >", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidGreaterThanOrEqualTo(String value) {
-            addCriterion("pid >=", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidLessThan(String value) {
-            addCriterion("pid <", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidLessThanOrEqualTo(String value) {
-            addCriterion("pid <=", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidLike(String value) {
-            addCriterion("pid like", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidNotLike(String value) {
-            addCriterion("pid not like", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidIn(List<String> values) {
-            addCriterion("pid in", values, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidNotIn(List<String> values) {
-            addCriterion("pid not in", values, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidBetween(String value1, String value2) {
-            addCriterion("pid between", value1, value2, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidNotBetween(String value1, String value2) {
-            addCriterion("pid not between", value1, value2, "pid");
-            return (Criteria) this;
-        }
-
         public Criteria andPoundageIsNull() {
             addCriterion("poundage is null");
             return (Criteria) this;
@@ -1262,76 +852,6 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
 
         public Criteria andPoundageNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("poundage not between", value1, value2, "poundage");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyIsNull() {
-            addCriterion("rmb_key is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyIsNotNull() {
-            addCriterion("rmb_key is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyEqualTo(String value) {
-            addCriterion("rmb_key =", value, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyNotEqualTo(String value) {
-            addCriterion("rmb_key <>", value, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyGreaterThan(String value) {
-            addCriterion("rmb_key >", value, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyGreaterThanOrEqualTo(String value) {
-            addCriterion("rmb_key >=", value, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyLessThan(String value) {
-            addCriterion("rmb_key <", value, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyLessThanOrEqualTo(String value) {
-            addCriterion("rmb_key <=", value, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyLike(String value) {
-            addCriterion("rmb_key like", value, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyNotLike(String value) {
-            addCriterion("rmb_key not like", value, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyIn(List<String> values) {
-            addCriterion("rmb_key in", values, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyNotIn(List<String> values) {
-            addCriterion("rmb_key not in", values, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyBetween(String value1, String value2) {
-            addCriterion("rmb_key between", value1, value2, "rmbKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andRmbKeyNotBetween(String value1, String value2) {
-            addCriterion("rmb_key not between", value1, value2, "rmbKey");
             return (Criteria) this;
         }
 
@@ -1472,76 +992,6 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
 
         public Criteria andSellerEmailNotBetween(String value1, String value2) {
             addCriterion("seller_email not between", value1, value2, "sellerEmail");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameIsNull() {
-            addCriterion("spname is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameIsNotNull() {
-            addCriterion("spname is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameEqualTo(String value) {
-            addCriterion("spname =", value, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameNotEqualTo(String value) {
-            addCriterion("spname <>", value, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameGreaterThan(String value) {
-            addCriterion("spname >", value, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameGreaterThanOrEqualTo(String value) {
-            addCriterion("spname >=", value, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameLessThan(String value) {
-            addCriterion("spname <", value, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameLessThanOrEqualTo(String value) {
-            addCriterion("spname <=", value, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameLike(String value) {
-            addCriterion("spname like", value, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameNotLike(String value) {
-            addCriterion("spname not like", value, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameIn(List<String> values) {
-            addCriterion("spname in", values, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameNotIn(List<String> values) {
-            addCriterion("spname not in", values, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameBetween(String value1, String value2) {
-            addCriterion("spname between", value1, value2, "spname");
-            return (Criteria) this;
-        }
-
-        public Criteria andSpnameNotBetween(String value1, String value2) {
-            addCriterion("spname not between", value1, value2, "spname");
             return (Criteria) this;
         }
 
@@ -2372,6 +1822,76 @@ public class PayConfigExample extends AbstractExample<PayConfigBO> {
 
         public Criteria andWxRsaPublicNotBetween(String value1, String value2) {
             addCriterion("wx_rsa_public not between", value1, value2, "wxRsaPublic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyIsNull() {
+            addCriterion("stripe_api_key is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyIsNotNull() {
+            addCriterion("stripe_api_key is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyEqualTo(String value) {
+            addCriterion("stripe_api_key =", value, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyNotEqualTo(String value) {
+            addCriterion("stripe_api_key <>", value, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyGreaterThan(String value) {
+            addCriterion("stripe_api_key >", value, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyGreaterThanOrEqualTo(String value) {
+            addCriterion("stripe_api_key >=", value, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyLessThan(String value) {
+            addCriterion("stripe_api_key <", value, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyLessThanOrEqualTo(String value) {
+            addCriterion("stripe_api_key <=", value, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyLike(String value) {
+            addCriterion("stripe_api_key like", value, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyNotLike(String value) {
+            addCriterion("stripe_api_key not like", value, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyIn(List<String> values) {
+            addCriterion("stripe_api_key in", values, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyNotIn(List<String> values) {
+            addCriterion("stripe_api_key not in", values, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyBetween(String value1, String value2) {
+            addCriterion("stripe_api_key between", value1, value2, "stripeApiKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andStripeApiKeyNotBetween(String value1, String value2) {
+            addCriterion("stripe_api_key not between", value1, value2, "stripeApiKey");
             return (Criteria) this;
         }
     }

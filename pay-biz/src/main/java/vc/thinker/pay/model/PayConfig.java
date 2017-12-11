@@ -17,12 +17,6 @@ public class PayConfig extends BaseModel {
     private String appPublicKey;
 
     /**  **/
-    private String chinabankAccount;
-
-    /**  **/
-    private String chinabankKey;
-
-    /**  **/
     private String content;
 
     /** 支付货币种类 **/
@@ -32,13 +26,7 @@ public class PayConfig extends BaseModel {
     private Boolean install;
 
     /**  **/
-    private Integer interfaceType;
-
-    /**  **/
     private String mark;
-
-    /**  **/
-    private String merchantAcctid;
 
     /**  **/
     private String name;
@@ -46,17 +34,8 @@ public class PayConfig extends BaseModel {
     /**  **/
     private String partner;
 
-    /** paypal商户id **/
-    private String paypalUserId;
-
-    /**  **/
-    private String pid;
-
     /** 支付手续费 **/
     private BigDecimal poundage;
-
-    /**  **/
-    private String rmbKey;
 
     /**  **/
     private String safeKey;
@@ -65,12 +44,9 @@ public class PayConfig extends BaseModel {
     private String sellerEmail;
 
     /**  **/
-    private String spname;
-
-    /**  **/
     private String tenpayKey;
 
-    /**  **/
+    /** 微信商户号 **/
     private String tenpayPartner;
 
     /**  **/
@@ -102,6 +78,9 @@ public class PayConfig extends BaseModel {
 
     /** 微信RSA公钥 **/
     private String wxRsaPublic;
+
+    /** stripe api key **/
+    private String stripeApiKey;
 
     public Long getId() {
         return id;
@@ -135,22 +114,6 @@ public class PayConfig extends BaseModel {
         this.appPublicKey = appPublicKey;
     }
 
-    public String getChinabankAccount() {
-        return chinabankAccount;
-    }
-
-    public void setChinabankAccount(String chinabankAccount) {
-        this.chinabankAccount = chinabankAccount;
-    }
-
-    public String getChinabankKey() {
-        return chinabankKey;
-    }
-
-    public void setChinabankKey(String chinabankKey) {
-        this.chinabankKey = chinabankKey;
-    }
-
     public String getContent() {
         return content;
     }
@@ -175,28 +138,12 @@ public class PayConfig extends BaseModel {
         this.install = install;
     }
 
-    public Integer getInterfaceType() {
-        return interfaceType;
-    }
-
-    public void setInterfaceType(Integer interfaceType) {
-        this.interfaceType = interfaceType;
-    }
-
     public String getMark() {
         return mark;
     }
 
     public void setMark(String mark) {
         this.mark = mark;
-    }
-
-    public String getMerchantAcctid() {
-        return merchantAcctid;
-    }
-
-    public void setMerchantAcctid(String merchantAcctid) {
-        this.merchantAcctid = merchantAcctid;
     }
 
     public String getName() {
@@ -215,36 +162,12 @@ public class PayConfig extends BaseModel {
         this.partner = partner;
     }
 
-    public String getPaypalUserId() {
-        return paypalUserId;
-    }
-
-    public void setPaypalUserId(String paypalUserId) {
-        this.paypalUserId = paypalUserId;
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
-    }
-
     public BigDecimal getPoundage() {
         return poundage;
     }
 
     public void setPoundage(BigDecimal poundage) {
         this.poundage = poundage;
-    }
-
-    public String getRmbKey() {
-        return rmbKey;
-    }
-
-    public void setRmbKey(String rmbKey) {
-        this.rmbKey = rmbKey;
     }
 
     public String getSafeKey() {
@@ -261,14 +184,6 @@ public class PayConfig extends BaseModel {
 
     public void setSellerEmail(String sellerEmail) {
         this.sellerEmail = sellerEmail;
-    }
-
-    public String getSpname() {
-        return spname;
-    }
-
-    public void setSpname(String spname) {
-        this.spname = spname;
     }
 
     public String getTenpayKey() {
@@ -365,5 +280,13 @@ public class PayConfig extends BaseModel {
 
     public void setWxRsaPublic(String wxRsaPublic) {
         this.wxRsaPublic = wxRsaPublic;
+    }
+
+    public String getStripeApiKey() {
+        return stripeApiKey;
+    }
+
+    public void setStripeApiKey(String stripeApiKey) {
+        this.stripeApiKey = stripeApiKey;
     }
 }

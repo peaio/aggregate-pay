@@ -6,23 +6,15 @@
     <result column="alipay_rate" jdbcType="DECIMAL" property="alipayRate" />
     <result column="app_private_key" jdbcType="VARCHAR" property="appPrivateKey" />
     <result column="app_public_key" jdbcType="VARCHAR" property="appPublicKey" />
-    <result column="chinabank_account" jdbcType="VARCHAR" property="chinabankAccount" />
-    <result column="chinabank_key" jdbcType="VARCHAR" property="chinabankKey" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="currency_code" jdbcType="VARCHAR" property="currencyCode" />
     <result column="install" jdbcType="BIT" property="install" />
-    <result column="interface_type" jdbcType="INTEGER" property="interfaceType" />
     <result column="mark" jdbcType="VARCHAR" property="mark" />
-    <result column="merchant_acctId" jdbcType="VARCHAR" property="merchantAcctid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="partner" jdbcType="VARCHAR" property="partner" />
-    <result column="paypal_user_id" jdbcType="VARCHAR" property="paypalUserId" />
-    <result column="pid" jdbcType="VARCHAR" property="pid" />
     <result column="poundage" jdbcType="DECIMAL" property="poundage" />
-    <result column="rmb_key" jdbcType="VARCHAR" property="rmbKey" />
     <result column="safe_key" jdbcType="VARCHAR" property="safeKey" />
     <result column="seller_email" jdbcType="VARCHAR" property="sellerEmail" />
-    <result column="spname" jdbcType="VARCHAR" property="spname" />
     <result column="tenpay_key" jdbcType="VARCHAR" property="tenpayKey" />
     <result column="tenpay_partner" jdbcType="VARCHAR" property="tenpayPartner" />
     <result column="trade_mode" jdbcType="INTEGER" property="tradeMode" />
@@ -35,6 +27,7 @@
     <result column="alipay_public_key" jdbcType="VARCHAR" property="alipayPublicKey" />
     <result column="wx_cert_local_path" jdbcType="VARCHAR" property="wxCertLocalPath" />
     <result column="wx_rsa_public" jdbcType="VARCHAR" property="wxRsaPublic" />
+    <result column="stripe_api_key" jdbcType="VARCHAR" property="stripeApiKey" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="BOResultMap" type="vc.thinker.pay.bo.PayConfigBO" />
   <sql id="Example_Where_Clause">
@@ -96,11 +89,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, alipay_rate, app_private_key, app_public_key, chinabank_account, chinabank_key, 
-    content, currency_code, install, interface_type, mark, merchant_acctId, name, partner, 
-    paypal_user_id, pid, poundage, rmb_key, safe_key, seller_email, spname, tenpay_key, 
-    tenpay_partner, trade_mode, wx_appSecret, wx_appid, wx_paySignKey, pay_channel, sign_type, 
-    alipay_app_id, alipay_public_key, wx_cert_local_path, wx_rsa_public
+    id, alipay_rate, app_private_key, app_public_key, content, currency_code, install, 
+    mark, name, partner, poundage, safe_key, seller_email, tenpay_key, tenpay_partner, 
+    trade_mode, wx_appSecret, wx_appid, wx_paySignKey, pay_channel, sign_type, alipay_app_id, 
+    alipay_public_key, wx_cert_local_path, wx_rsa_public, stripe_api_key
   </sql>
   <select id="selectByExample" parameterType="vc.thinker.pay.model.PayConfigExample" resultMap="BOResultMap">
     select
@@ -137,29 +129,23 @@
   </delete>
   <insert id="insert" keyProperty="id" parameterType="vc.thinker.pay.model.PayConfig" useGeneratedKeys="true">
     insert into pay_config (id, alipay_rate, app_private_key, 
-      app_public_key, chinabank_account, chinabank_key, 
-      content, currency_code, install, 
-      interface_type, mark, merchant_acctId, 
-      name, partner, paypal_user_id, 
-      pid, poundage, rmb_key, 
-      safe_key, seller_email, spname, 
+      app_public_key, content, currency_code, 
+      install, mark, name, partner, 
+      poundage, safe_key, seller_email, 
       tenpay_key, tenpay_partner, trade_mode, 
       wx_appSecret, wx_appid, wx_paySignKey, 
       pay_channel, sign_type, alipay_app_id, 
-      alipay_public_key, wx_cert_local_path, wx_rsa_public
-      )
+      alipay_public_key, wx_cert_local_path, wx_rsa_public, 
+      stripe_api_key)
     values (#{id,jdbcType=BIGINT}, #{alipayRate,jdbcType=DECIMAL}, #{appPrivateKey,jdbcType=VARCHAR}, 
-      #{appPublicKey,jdbcType=VARCHAR}, #{chinabankAccount,jdbcType=VARCHAR}, #{chinabankKey,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{currencyCode,jdbcType=VARCHAR}, #{install,jdbcType=BIT}, 
-      #{interfaceType,jdbcType=INTEGER}, #{mark,jdbcType=VARCHAR}, #{merchantAcctid,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{partner,jdbcType=VARCHAR}, #{paypalUserId,jdbcType=VARCHAR}, 
-      #{pid,jdbcType=VARCHAR}, #{poundage,jdbcType=DECIMAL}, #{rmbKey,jdbcType=VARCHAR}, 
-      #{safeKey,jdbcType=VARCHAR}, #{sellerEmail,jdbcType=VARCHAR}, #{spname,jdbcType=VARCHAR}, 
+      #{appPublicKey,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{currencyCode,jdbcType=VARCHAR}, 
+      #{install,jdbcType=BIT}, #{mark,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{partner,jdbcType=VARCHAR}, 
+      #{poundage,jdbcType=DECIMAL}, #{safeKey,jdbcType=VARCHAR}, #{sellerEmail,jdbcType=VARCHAR}, 
       #{tenpayKey,jdbcType=VARCHAR}, #{tenpayPartner,jdbcType=VARCHAR}, #{tradeMode,jdbcType=INTEGER}, 
       #{wxAppsecret,jdbcType=VARCHAR}, #{wxAppid,jdbcType=VARCHAR}, #{wxPaysignkey,jdbcType=VARCHAR}, 
       #{payChannel,jdbcType=VARCHAR}, #{signType,jdbcType=VARCHAR}, #{alipayAppId,jdbcType=VARCHAR}, 
-      #{alipayPublicKey,jdbcType=VARCHAR}, #{wxCertLocalPath,jdbcType=VARCHAR}, #{wxRsaPublic,jdbcType=VARCHAR}
-      )
+      #{alipayPublicKey,jdbcType=VARCHAR}, #{wxCertLocalPath,jdbcType=VARCHAR}, #{wxRsaPublic,jdbcType=VARCHAR}, 
+      #{stripeApiKey,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyProperty="id" parameterType="vc.thinker.pay.model.PayConfig" useGeneratedKeys="true">
     insert into pay_config
@@ -176,12 +162,6 @@
       <if test="appPublicKey != null">
         app_public_key,
       </if>
-      <if test="chinabankAccount != null">
-        chinabank_account,
-      </if>
-      <if test="chinabankKey != null">
-        chinabank_key,
-      </if>
       <if test="content != null">
         content,
       </if>
@@ -191,14 +171,8 @@
       <if test="install != null">
         install,
       </if>
-      <if test="interfaceType != null">
-        interface_type,
-      </if>
       <if test="mark != null">
         mark,
-      </if>
-      <if test="merchantAcctid != null">
-        merchant_acctId,
       </if>
       <if test="name != null">
         name,
@@ -206,26 +180,14 @@
       <if test="partner != null">
         partner,
       </if>
-      <if test="paypalUserId != null">
-        paypal_user_id,
-      </if>
-      <if test="pid != null">
-        pid,
-      </if>
       <if test="poundage != null">
         poundage,
-      </if>
-      <if test="rmbKey != null">
-        rmb_key,
       </if>
       <if test="safeKey != null">
         safe_key,
       </if>
       <if test="sellerEmail != null">
         seller_email,
-      </if>
-      <if test="spname != null">
-        spname,
       </if>
       <if test="tenpayKey != null">
         tenpay_key,
@@ -263,6 +225,9 @@
       <if test="wxRsaPublic != null">
         wx_rsa_public,
       </if>
+      <if test="stripeApiKey != null">
+        stripe_api_key,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -277,12 +242,6 @@
       <if test="appPublicKey != null">
         #{appPublicKey,jdbcType=VARCHAR},
       </if>
-      <if test="chinabankAccount != null">
-        #{chinabankAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="chinabankKey != null">
-        #{chinabankKey,jdbcType=VARCHAR},
-      </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
       </if>
@@ -292,14 +251,8 @@
       <if test="install != null">
         #{install,jdbcType=BIT},
       </if>
-      <if test="interfaceType != null">
-        #{interfaceType,jdbcType=INTEGER},
-      </if>
       <if test="mark != null">
         #{mark,jdbcType=VARCHAR},
-      </if>
-      <if test="merchantAcctid != null">
-        #{merchantAcctid,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -307,26 +260,14 @@
       <if test="partner != null">
         #{partner,jdbcType=VARCHAR},
       </if>
-      <if test="paypalUserId != null">
-        #{paypalUserId,jdbcType=VARCHAR},
-      </if>
-      <if test="pid != null">
-        #{pid,jdbcType=VARCHAR},
-      </if>
       <if test="poundage != null">
         #{poundage,jdbcType=DECIMAL},
-      </if>
-      <if test="rmbKey != null">
-        #{rmbKey,jdbcType=VARCHAR},
       </if>
       <if test="safeKey != null">
         #{safeKey,jdbcType=VARCHAR},
       </if>
       <if test="sellerEmail != null">
         #{sellerEmail,jdbcType=VARCHAR},
-      </if>
-      <if test="spname != null">
-        #{spname,jdbcType=VARCHAR},
       </if>
       <if test="tenpayKey != null">
         #{tenpayKey,jdbcType=VARCHAR},
@@ -364,6 +305,9 @@
       <if test="wxRsaPublic != null">
         #{wxRsaPublic,jdbcType=VARCHAR},
       </if>
+      <if test="stripeApiKey != null">
+        #{stripeApiKey,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="vc.thinker.pay.model.PayConfigExample" resultType="java.lang.Integer">
@@ -387,12 +331,6 @@
       <if test="record.appPublicKey != null">
         app_public_key = #{record.appPublicKey,jdbcType=VARCHAR},
       </if>
-      <if test="record.chinabankAccount != null">
-        chinabank_account = #{record.chinabankAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="record.chinabankKey != null">
-        chinabank_key = #{record.chinabankKey,jdbcType=VARCHAR},
-      </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
       </if>
@@ -402,14 +340,8 @@
       <if test="record.install != null">
         install = #{record.install,jdbcType=BIT},
       </if>
-      <if test="record.interfaceType != null">
-        interface_type = #{record.interfaceType,jdbcType=INTEGER},
-      </if>
       <if test="record.mark != null">
         mark = #{record.mark,jdbcType=VARCHAR},
-      </if>
-      <if test="record.merchantAcctid != null">
-        merchant_acctId = #{record.merchantAcctid,jdbcType=VARCHAR},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -417,26 +349,14 @@
       <if test="record.partner != null">
         partner = #{record.partner,jdbcType=VARCHAR},
       </if>
-      <if test="record.paypalUserId != null">
-        paypal_user_id = #{record.paypalUserId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.pid != null">
-        pid = #{record.pid,jdbcType=VARCHAR},
-      </if>
       <if test="record.poundage != null">
         poundage = #{record.poundage,jdbcType=DECIMAL},
-      </if>
-      <if test="record.rmbKey != null">
-        rmb_key = #{record.rmbKey,jdbcType=VARCHAR},
       </if>
       <if test="record.safeKey != null">
         safe_key = #{record.safeKey,jdbcType=VARCHAR},
       </if>
       <if test="record.sellerEmail != null">
         seller_email = #{record.sellerEmail,jdbcType=VARCHAR},
-      </if>
-      <if test="record.spname != null">
-        spname = #{record.spname,jdbcType=VARCHAR},
       </if>
       <if test="record.tenpayKey != null">
         tenpay_key = #{record.tenpayKey,jdbcType=VARCHAR},
@@ -474,6 +394,9 @@
       <if test="record.wxRsaPublic != null">
         wx_rsa_public = #{record.wxRsaPublic,jdbcType=VARCHAR},
       </if>
+      <if test="record.stripeApiKey != null">
+        stripe_api_key = #{record.stripeApiKey,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -485,23 +408,15 @@
       alipay_rate = #{record.alipayRate,jdbcType=DECIMAL},
       app_private_key = #{record.appPrivateKey,jdbcType=VARCHAR},
       app_public_key = #{record.appPublicKey,jdbcType=VARCHAR},
-      chinabank_account = #{record.chinabankAccount,jdbcType=VARCHAR},
-      chinabank_key = #{record.chinabankKey,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
       currency_code = #{record.currencyCode,jdbcType=VARCHAR},
       install = #{record.install,jdbcType=BIT},
-      interface_type = #{record.interfaceType,jdbcType=INTEGER},
       mark = #{record.mark,jdbcType=VARCHAR},
-      merchant_acctId = #{record.merchantAcctid,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       partner = #{record.partner,jdbcType=VARCHAR},
-      paypal_user_id = #{record.paypalUserId,jdbcType=VARCHAR},
-      pid = #{record.pid,jdbcType=VARCHAR},
       poundage = #{record.poundage,jdbcType=DECIMAL},
-      rmb_key = #{record.rmbKey,jdbcType=VARCHAR},
       safe_key = #{record.safeKey,jdbcType=VARCHAR},
       seller_email = #{record.sellerEmail,jdbcType=VARCHAR},
-      spname = #{record.spname,jdbcType=VARCHAR},
       tenpay_key = #{record.tenpayKey,jdbcType=VARCHAR},
       tenpay_partner = #{record.tenpayPartner,jdbcType=VARCHAR},
       trade_mode = #{record.tradeMode,jdbcType=INTEGER},
@@ -513,7 +428,8 @@
       alipay_app_id = #{record.alipayAppId,jdbcType=VARCHAR},
       alipay_public_key = #{record.alipayPublicKey,jdbcType=VARCHAR},
       wx_cert_local_path = #{record.wxCertLocalPath,jdbcType=VARCHAR},
-      wx_rsa_public = #{record.wxRsaPublic,jdbcType=VARCHAR}
+      wx_rsa_public = #{record.wxRsaPublic,jdbcType=VARCHAR},
+      stripe_api_key = #{record.stripeApiKey,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -530,12 +446,6 @@
       <if test="appPublicKey != null">
         app_public_key = #{appPublicKey,jdbcType=VARCHAR},
       </if>
-      <if test="chinabankAccount != null">
-        chinabank_account = #{chinabankAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="chinabankKey != null">
-        chinabank_key = #{chinabankKey,jdbcType=VARCHAR},
-      </if>
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
       </if>
@@ -545,14 +455,8 @@
       <if test="install != null">
         install = #{install,jdbcType=BIT},
       </if>
-      <if test="interfaceType != null">
-        interface_type = #{interfaceType,jdbcType=INTEGER},
-      </if>
       <if test="mark != null">
         mark = #{mark,jdbcType=VARCHAR},
-      </if>
-      <if test="merchantAcctid != null">
-        merchant_acctId = #{merchantAcctid,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -560,26 +464,14 @@
       <if test="partner != null">
         partner = #{partner,jdbcType=VARCHAR},
       </if>
-      <if test="paypalUserId != null">
-        paypal_user_id = #{paypalUserId,jdbcType=VARCHAR},
-      </if>
-      <if test="pid != null">
-        pid = #{pid,jdbcType=VARCHAR},
-      </if>
       <if test="poundage != null">
         poundage = #{poundage,jdbcType=DECIMAL},
-      </if>
-      <if test="rmbKey != null">
-        rmb_key = #{rmbKey,jdbcType=VARCHAR},
       </if>
       <if test="safeKey != null">
         safe_key = #{safeKey,jdbcType=VARCHAR},
       </if>
       <if test="sellerEmail != null">
         seller_email = #{sellerEmail,jdbcType=VARCHAR},
-      </if>
-      <if test="spname != null">
-        spname = #{spname,jdbcType=VARCHAR},
       </if>
       <if test="tenpayKey != null">
         tenpay_key = #{tenpayKey,jdbcType=VARCHAR},
@@ -617,6 +509,9 @@
       <if test="wxRsaPublic != null">
         wx_rsa_public = #{wxRsaPublic,jdbcType=VARCHAR},
       </if>
+      <if test="stripeApiKey != null">
+        stripe_api_key = #{stripeApiKey,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -625,23 +520,15 @@
     set alipay_rate = #{alipayRate,jdbcType=DECIMAL},
       app_private_key = #{appPrivateKey,jdbcType=VARCHAR},
       app_public_key = #{appPublicKey,jdbcType=VARCHAR},
-      chinabank_account = #{chinabankAccount,jdbcType=VARCHAR},
-      chinabank_key = #{chinabankKey,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       currency_code = #{currencyCode,jdbcType=VARCHAR},
       install = #{install,jdbcType=BIT},
-      interface_type = #{interfaceType,jdbcType=INTEGER},
       mark = #{mark,jdbcType=VARCHAR},
-      merchant_acctId = #{merchantAcctid,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       partner = #{partner,jdbcType=VARCHAR},
-      paypal_user_id = #{paypalUserId,jdbcType=VARCHAR},
-      pid = #{pid,jdbcType=VARCHAR},
       poundage = #{poundage,jdbcType=DECIMAL},
-      rmb_key = #{rmbKey,jdbcType=VARCHAR},
       safe_key = #{safeKey,jdbcType=VARCHAR},
       seller_email = #{sellerEmail,jdbcType=VARCHAR},
-      spname = #{spname,jdbcType=VARCHAR},
       tenpay_key = #{tenpayKey,jdbcType=VARCHAR},
       tenpay_partner = #{tenpayPartner,jdbcType=VARCHAR},
       trade_mode = #{tradeMode,jdbcType=INTEGER},
@@ -653,7 +540,8 @@
       alipay_app_id = #{alipayAppId,jdbcType=VARCHAR},
       alipay_public_key = #{alipayPublicKey,jdbcType=VARCHAR},
       wx_cert_local_path = #{wxCertLocalPath,jdbcType=VARCHAR},
-      wx_rsa_public = #{wxRsaPublic,jdbcType=VARCHAR}
+      wx_rsa_public = #{wxRsaPublic,jdbcType=VARCHAR},
+      stripe_api_key = #{stripeApiKey,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
