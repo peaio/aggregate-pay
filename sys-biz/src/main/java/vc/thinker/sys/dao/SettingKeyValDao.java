@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +24,8 @@ import vc.thinker.sys.utils.BeanRefUtil;
 
 @Repository
 public class SettingKeyValDao {
+	
+	private static final Logger log=LoggerFactory.getLogger(SettingKeyValDao.class);
 
 	@Autowired
 	private SettingKeyValMapper mapper;
@@ -47,7 +51,8 @@ public class SettingKeyValDao {
 			String fieldName=settingKeyValBO.getFkey();
 			Field field=ReflectionUtils.findField(c, fieldName);
 			if(field == null){
-				throw new IllegalArgumentException("Class["+c+"] not find "+fieldName);
+				log.error("Class[{}] not find {}",c,fieldName);
+				continue;
 			}
 			ReflectionUtils.makeAccessible(field);
 			
