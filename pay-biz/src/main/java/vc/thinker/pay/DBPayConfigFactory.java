@@ -3,8 +3,11 @@ package vc.thinker.pay;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.stripe.Stripe;
+
 import vc.thinker.pay.alipay.AlipayConfig;
 import vc.thinker.pay.service.PayConfigService;
+import vc.thinker.pay.stripe.StripeConfig;
 import vc.thinker.pay.weixin.WeixinConfig;
 
 /**
@@ -49,6 +52,11 @@ public class DBPayConfigFactory implements PayConfigFactory{
 			weixinConfig.setCertLocalPath(payConfig.getWxCertLocalPath());
 			weixinConfig.setPayBankPublicKey(payConfig.getWxRsaPublic());
 			result=weixinConfig;
+			break;
+		case STRIPE:
+			StripeConfig stripeConfig=new StripeConfig();
+			stripeConfig.setApiKey(payConfig.getStripeApiKey());
+			result=stripeConfig;
 			break;
 		}
 		result.setChannel(channel);
