@@ -69,4 +69,11 @@ public class DicAreaDao {
 	public List<DicAreaBO> findToCacheData() {
 		return findAll();
 	}
+	
+	public DicAreaBO() findByName(String name){
+		DicAreaExample example=new DicAreaExample();
+		example.createCriteria().andNameEqualTo(name);
+		List<DicAreaBO> diclist = mapper.selectByExample(example);
+		return diclist.isEmpty ? null:diclist.get(0);
+	}
 }
