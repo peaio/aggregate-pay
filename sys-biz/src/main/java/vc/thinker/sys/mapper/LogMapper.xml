@@ -60,8 +60,6 @@
 			</if>
 			<if test="param.exception != null and param.exception != ''">
 				and l.type='2'
-			</if>
-			<if test="param.exception != null and param.exception != ''">
 				and l.exception like CONCAT("%",#{param.exception},"%")
 			</if>
 		  <choose>
