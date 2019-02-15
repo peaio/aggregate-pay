@@ -1,1 +1,27 @@
+<<<<<<< HEAD
 /target/
+=======
+.externalToolBuilders
+.DS_Store
+.mymetadata
+.checkstyle
+.classpath
+.project
+.class
+.war
+.zip
+.rar
+.idea
+*.iml
+.settings/*
+/indexes/*
+target/*
+/logs/*
+/bin/*
+/src/main/webapp/WEB-INF/classes/*
+/src/main/webapp/userfiles/*
+/target
+/bin
+src/main/webapp/META-INF/
+*.db
+>>>>>>> d412e2fbe68eaf002e5c689cd761dd6facb83857
